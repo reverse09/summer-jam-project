@@ -89,6 +89,12 @@ func take_damage():
 	if (health > 0):
 		cracking += crack_coefficient
 	if (health <= 0):
+		for child in self.get_children():
+			if child is Food:
+				self.remove_child(child)
+				food_container.add_child(child)
+				child.position = self.position
+				child.search_target = true
 		self.queue_free()
 		wave_manager.enemy_death()
 
