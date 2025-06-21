@@ -1,7 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://861d7h8nam1y"]
+[gd_scene load_steps=11 format=3 uid="uid://dwvxlnjchmrli"]
 
 [ext_resource type="Script" uid="uid://bj12ryfvu8pax" path="res://scripts/fly.gd" id="1_g2qrh"]
+[ext_resource type="Shader" uid="uid://b5fn67yhtooj2" path="res://scripts/crack.gdshader" id="1_w5j00"]
 [ext_resource type="Texture2D" uid="uid://wxflidp05r6y" path="res://assets/beetle.png" id="2_g2qrh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w5j00"]
+shader = ExtResource("1_w5j00")
+shader_parameter/progress = 0.0
+shader_parameter/block_size = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w5j00"]
 atlas = ExtResource("2_g2qrh")
@@ -50,6 +56,7 @@ accel = 2
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+material = SubResource("ShaderMaterial_w5j00")
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_miimq")
 autoplay = "default"
