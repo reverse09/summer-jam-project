@@ -44,9 +44,6 @@ animations = [{
 
 [node name="Fly" type="CharacterBody2D"]
 script = ExtResource("1_xr3pu")
-speed = null
-accel = null
-health = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_xr3pu")
