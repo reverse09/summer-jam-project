@@ -4,8 +4,8 @@ func _physics_process(delta):
 	increment_lifetime(delta)
 	find_food()
 	wobble_bug()
-	update_sprite()
 	run_with_food()
+	update_sprite()
 	
 	move(delta)
 

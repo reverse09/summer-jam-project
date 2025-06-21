@@ -95,9 +95,8 @@ func take_damage():
 				food_container.add_child(child)
 				child.position = self.position
 				child.search_target = true
-		self.queue_free()
 		wave_manager.enemy_death()
+		animation_player.play("crack")
 
 func update_sprite():
 	sprite.material.set_shader_parameter("progress", cracking)
-	pass
