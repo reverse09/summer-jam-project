@@ -1,8 +1,53 @@
-[gd_scene load_steps=2 format=3 uid="uid://4xogkc0nabjc"]
+[gd_scene load_steps=8 format=3 uid="uid://4xogkc0nabjc"]
 
-[ext_resource type="Texture2D" uid="uid://m1ydcnh1ppog" path="res://assets/swatter.png" id="1_5fxqb"]
+[ext_resource type="Script" uid="uid://dr5fvsspqkugv" path="res://scenes/swatter.gd" id="1_bb5xh"]
+[ext_resource type="Texture2D" uid="uid://d371ftd04g3vn" path="res://assets/swat.png" id="2_bb5xh"]
 
-[node name="Swatter" type="Node2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bb5xh"]
+atlas = ExtResource("2_bb5xh")
+region = Rect2(0, 0, 400, 500)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_5fxqb")
+[sub_resource type="AtlasTexture" id="AtlasTexture_s202q"]
+atlas = ExtResource("2_bb5xh")
+region = Rect2(400, 0, 400, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjwij"]
+atlas = ExtResource("2_bb5xh")
+region = Rect2(800, 0, 400, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s202q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bb5xh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s202q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjwij")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"swat",
+"speed": 40.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjwij"]
+size = Vector2(17, 44)
+
+[node name="Swatter" type="StaticBody2D"]
+script = ExtResource("1_bb5xh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.15768, 0.151552)
+sprite_frames = SubResource("SpriteFrames_s202q")
+animation = &"swat"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cjwij")
