@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3hb874vncijy"]
+
+[ext_resource type="Script" uid="uid://c0awr8obvhvdm" path="res://scripts/firefly_light.gd" id="1_0udpb"]
+[ext_resource type="Texture2D" uid="uid://2e6onie16pyw" path="res://assets/circle.png" id="1_dg4x5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jorpi"]
+
+[node name="FireflyLight" type="Area2D"]
+script = ExtResource("1_0udpb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(4.84, 4.76)
+shape = SubResource("CircleShape2D_jorpi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_dg4x5")

@@ -19,6 +19,7 @@ const GRAB_DISTANCE = 30
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var food_container = $"../../FoodContainer"
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var area2d: Area2D = $Area2D
 
 var starting_position = null
 var holding_food: bool = false
@@ -86,6 +87,12 @@ func run_with_food():
 	direction_to_food = direction_to_food.normalized()
 
 func take_damage():
+	if (!(self is Firefly)):
+		var overlapping = area2d.get_overlapping_areas()
+		if (overlapping.size() > 0):
+			for area in overlapping:
+				if area is Firefly_Light:
+					return
 	health -= 1
 	if (health > 0):
 		cracking += crack_coefficient
@@ -104,3 +111,4 @@ func take_damage():
 
 func update_sprite():
 	sprite.material.set_shader_parameter("progress", cracking)
+	

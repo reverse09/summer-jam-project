@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://wm7uh6iipgvs"]
+[gd_scene load_steps=15 format=3 uid="uid://wm7uh6iipgvs"]
 
 [ext_resource type="Script" uid="uid://bj12ryfvu8pax" path="res://scripts/fly.gd" id="1_xr3pu"]
 [ext_resource type="Shader" uid="uid://b5fn67yhtooj2" path="res://scripts/crack.gdshader" id="2_2lkvx"]
@@ -100,6 +100,9 @@ _data = {
 &"crack": SubResource("Animation_2lkvx")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2lkvx"]
+size = Vector2(24, 23)
+
 [node name="Fly" type="CharacterBody2D"]
 script = ExtResource("1_xr3pu")
 STARTING_SPEED = 200.0
@@ -123,3 +126,9 @@ frame_progress = 0.260086
 libraries = {
 &"": SubResource("AnimationLibrary_0qovp")
 }
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_2lkvx")
