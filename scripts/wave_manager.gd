@@ -6,7 +6,7 @@ extends Node
 @onready var music_loop: AudioStreamPlayer = $"../Music/MusicLoop"
 
 const STARTING_FOOD = 4
-const BUG_SPAWN_OFFSET = 350
+const BUG_SPAWN_OFFSET = 400
 const FOOD_SCENE = preload("res://scenes/food.tscn")
 const ENEMY_TYPES = {
 	## TODO: "scene": null -> preload("res://enemies/something")
@@ -22,6 +22,11 @@ const ENEMY_TYPES = {
 	},
 	"firefly": {
 		"scene": preload("res://scenes/firefly.tscn"),
+		"difficulty": 5,
+		"earliest_appearance": 4,
+	},
+	"stinkbug": {
+		"scene": preload("res://scenes/stinkbug.tscn"),
 		"difficulty": 5,
 		"earliest_appearance": 4,
 	}
@@ -74,7 +79,7 @@ func _process(delta):
 
 func get_difficulty_budget() -> int:
 	## TODO: Replace this with something that's fun
-	return floor((2) * ((wave) ^ 2)  + 25)
+	return floor((45/(1 + (pow(2.718,-0.3 * (wave - 10))))) + 5)
 	
 	
 ## Repeatedly pick a random enemy, and if it is valid, add it to enemy queue

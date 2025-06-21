@@ -4,8 +4,8 @@
 [ext_resource type="Shader" uid="uid://b5fn67yhtooj2" path="res://scripts/crack.gdshader" id="2_2lkvx"]
 [ext_resource type="Texture2D" uid="uid://comefjojqmh41" path="res://assets/fly.png" id="2_xr3pu"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xr3pu"]
-size = Vector2(30, 30)
+[sub_resource type="CircleShape2D" id="CircleShape2D_2lkvx"]
+radius = 16.0312
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sgyng"]
 resource_local_to_scene = true
@@ -110,7 +110,7 @@ accel = 6
 wobble = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_xr3pu")
+shape = SubResource("CircleShape2D_2lkvx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

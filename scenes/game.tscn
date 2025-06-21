@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://d3dujpe1kvq4o" path="res://scripts/wave_manager.gd" id="2_yqjtg"]
 [ext_resource type="AudioStream" uid="uid://c5p8ar7ynd1ud" path="res://assets/musicbuildup.wav" id="3_lbhrr"]
 [ext_resource type="AudioStream" uid="uid://dn4lmxmcso8wd" path="res://assets/musicloop.wav" id="3_lnu2h"]
-[ext_resource type="Script" uid="uid://bf6ppugpgd5xw" path="res://scripts/boundary.gd" id="5_iywne"]
+[ext_resource type="Script" path="res://scripts/boundary.gd" id="5_iywne"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lnu2h"]
 load_path = "res://.godot/imported/grassybg.png-0bfb177aa31f9a0f7e060c7da1386c4b.ctex"
