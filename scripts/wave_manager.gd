@@ -76,7 +76,6 @@ func get_difficulty_budget() -> int:
 	## TODO: Replace this with something that's fun
 	return floor((2) * ((wave) ^ 2)  + 25)
 	
-	
 ## Repeatedly pick a random enemy, and if it is valid, add it to enemy queue
 func allocate_difficulty_budget():
 	var keys = ENEMY_TYPES.keys()

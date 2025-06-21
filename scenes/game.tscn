@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://cvwai0nd61hcj"]
+[gd_scene load_steps=17 format=3 uid="uid://cvwai0nd61hcj"]
 
 [ext_resource type="PackedScene" uid="uid://4xogkc0nabjc" path="res://scenes/swatter.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://d3dujpe1kvq4o" path="res://scripts/wave_manager.gd" id="2_yqjtg"]
 [ext_resource type="AudioStream" uid="uid://c5p8ar7ynd1ud" path="res://assets/musicbuildup.wav" id="3_lbhrr"]
 [ext_resource type="AudioStream" uid="uid://dn4lmxmcso8wd" path="res://assets/musicloop.wav" id="3_lnu2h"]
 [ext_resource type="Script" uid="uid://bf6ppugpgd5xw" path="res://scripts/boundary.gd" id="5_iywne"]
+[ext_resource type="Texture2D" uid="uid://dkrj66vphph44" path="res://assets/failscreen.png" id="6_p57ef"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lnu2h"]
 load_path = "res://.godot/imported/grassybg.png-0bfb177aa31f9a0f7e060c7da1386c4b.ctex"
@@ -61,6 +62,43 @@ size = Vector2(2, 490)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p57ef"]
 size = Vector2(2, 646)
+
+[sub_resource type="Animation" id="Animation_u5sy4"]
+resource_name = "fail"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gee14"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0tnpc"]
+_data = {
+&"RESET": SubResource("Animation_gee14"),
+&"fail": SubResource("Animation_u5sy4")
+}
 
 [node name="Game" type="Node2D"]
 
@@ -141,6 +179,15 @@ script = ExtResource("5_iywne")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BoundRight"]
 shape = SubResource("RectangleShape2D_lbhrr")
+
+[node name="Failscreen" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("6_p57ef")
+
+[node name="FailAnimation" type="AnimationPlayer" parent="Failscreen"]
+libraries = {
+&"": SubResource("AnimationLibrary_0tnpc")
+}
 
 [connection signal="timeout" from="WaveManager/SpawnTimer" to="WaveManager" method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="WaveManager/WaveTimer" to="WaveManager" method="_on_wave_timer_timeout"]
