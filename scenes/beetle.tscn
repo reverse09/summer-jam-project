@@ -88,6 +88,8 @@ _data = {
 script = ExtResource("1_g2qrh")
 STARTING_HEALTH = 5
 accel = 2
+wobble = 20
+wobble_period = 5
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
