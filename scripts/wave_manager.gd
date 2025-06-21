@@ -1,8 +1,11 @@
 extends Node
 
 @onready var enemy_container: Node = $"../EnemyContainer"
+@onready var food_container: Node = $"../FoodContainer"
+@onready var food_spawn_region: Node =  $"../FoodSpawnRegion"
 
-const STARTING_FOOD = 5
+const STARTING_FOOD = 4
+const FOOD_SCENE = preload("res://scenes/food.tscn")
 const ENEMY_TYPES = {
 	## TODO: "scene": null -> preload("res://enemies/something")
 	"fly": {
@@ -32,7 +35,18 @@ var wave_active: bool = false
 
 func _ready():
 	randomize()
+	spawn_food()
 	start_wave()
+
+func spawn_food():
+	var rect = food_spawn_region.get_child(0).shape.get_rect()
+	
+	for n in food:
+		var food_instance: Node = FOOD_SCENE.instantiate()
+		var position = Vector2(((randi() % int(rect.size.x)) + rect.position.x),((randi() % int(rect.size.y)) + rect.position.y))
+		food_instance.position = position
+		food_container.add_child(food_instance)
+	
 
 func start_wave():
 	kills = 0

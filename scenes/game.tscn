@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://4xogkc0nabjc" path="res://scenes/swatter.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://d3dujpe1kvq4o" path="res://scripts/wave_manager.gd" id="2_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://gftqrrgj8ea1" path="res://scenes/food.tscn" id="3_btr28"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lnu2h"]
 load_path = "res://.godot/imported/grassybg.png-0bfb177aa31f9a0f7e060c7da1386c4b.ctex"
@@ -11,6 +10,9 @@ load_path = "res://.godot/imported/grassybg.png-0bfb177aa31f9a0f7e060c7da1386c4b
 vertices = PackedVector2Array(565.953, 314, -568.023, 314, -568.977, -315, 563.047, -315)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-576, -323, 576, -323, 576, 324, -578, 324)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lnu2h"]
+size = Vector2(135.176, 30.6746)
 
 [node name="Game" type="Node2D"]
 
@@ -36,22 +38,18 @@ wait_time = 5.0
 
 [node name="EnemyContainer" type="Node" parent="."]
 
-[node name="Food" type="Node" parent="."]
-
-[node name="Food" parent="Food" instance=ExtResource("3_btr28")]
-position = Vector2(57, -43)
-
-[node name="Food2" parent="Food" instance=ExtResource("3_btr28")]
-position = Vector2(-95, -168)
-
-[node name="Food3" parent="Food" instance=ExtResource("3_btr28")]
-position = Vector2(-303, 72)
-
-[node name="Food4" parent="Food" instance=ExtResource("3_btr28")]
-position = Vector2(-39, 165)
+[node name="FoodContainer" type="Node" parent="."]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+scale = Vector2(0.567989, 0.762752)
 navigation_polygon = SubResource("NavigationPolygon_h21dd")
+
+[node name="FoodSpawnRegion" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FoodSpawnRegion"]
+position = Vector2(0, 1)
+scale = Vector2(1.32748, 4.11132)
+shape = SubResource("RectangleShape2D_lnu2h")
 
 [connection signal="timeout" from="WaveManager/SpawnTimer" to="WaveManager" method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="WaveManager/WaveTimer" to="WaveManager" method="_on_wave_timer_timeout"]
