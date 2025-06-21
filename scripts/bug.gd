@@ -1,10 +1,15 @@
 class_name Bug
 extends CharacterBody2D
 
+signal bug_died
+
+const STARTING_HEALTH = 1
 @export var speed = 100.0
 @export var accel = 4
+@export var health = STARTING_HEALTH
 
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
+@onready var wave_manager = $"../../WaveManager"
 
 func _physics_process(delta):
 	var direction = Vector3()
@@ -27,3 +32,10 @@ func _physics_process(delta):
 
 	look_at(nav.target_position)
 	move_and_slide()
+
+func take_damage():
+	health -= 1
+	if (health <= 0):
+		self.queue_free()
+		wave_manager.enemy_death()
+	

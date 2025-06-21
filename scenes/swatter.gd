@@ -1,5 +1,4 @@
 extends Area2D
-signal swatted_enemy
 
 @onready var animation_sprite = $AnimatedSprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
@@ -11,8 +10,8 @@ func swat():
 	var bodies: Array[Node2D] = get_overlapping_bodies()
 	for body in bodies:
 		if body is Bug:
-			body.queue_free()
-			emit_signal("swatted_enemy")
+			body.take_damage()
+			
 	animation_sprite.play("swat")
 	swat_sfx.play()
 

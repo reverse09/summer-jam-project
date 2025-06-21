@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvwai0nd61hcj"]
+[gd_scene load_steps=6 format=3 uid="uid://cvwai0nd61hcj"]
 
+[ext_resource type="Texture2D" uid="uid://bt8ssbsd7sw4f" path="res://assets/grassybg.png" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://4xogkc0nabjc" path="res://scenes/swatter.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://d3dujpe1kvq4o" path="res://scenes/wave_manager.gd" id="2_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://djhkf0kkwdcjb" path="res://scenes/food.tscn" id="3_btr28"]
+[ext_resource type="PackedScene" uid="uid://gftqrrgj8ea1" path="res://scenes/food.tscn" id="3_btr28"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_h21dd"]
 vertices = PackedVector2Array(565.953, 314, -568.023, 314, -568.977, -315, 563.047, -315)
@@ -10,6 +11,9 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-576, -323, 576, -323, 576, 324, -578, 324)])
 
 [node name="Game" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_lbhrr")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -47,7 +51,6 @@ position = Vector2(-39, 165)
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_h21dd")
 
-[connection signal="swatted_enemy" from="Swatter" to="WaveManager" method="_on_swatter_swatted_enemy"]
 [connection signal="timeout" from="WaveManager/SpawnTimer" to="WaveManager" method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="WaveManager/WaveTimer" to="WaveManager" method="_on_wave_timer_timeout"]
 [connection signal="timeout" from="WaveManager/InterimTimer" to="WaveManager" method="_on_interim_timer_timeout"]

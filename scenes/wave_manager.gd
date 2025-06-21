@@ -131,12 +131,9 @@ func _on_interim_timer_timeout() -> void:
 	start_wave()
 	$InterimTimer.stop()
 
-
-func _on_swatter_swatted_enemy() -> void:
+func enemy_death():
 	if (!wave_active):
 		return
 	
 	kills += 1
 	print("Kills: " + str(kills))
-	
-	
