@@ -10,6 +10,6 @@ func _physics_process(delta):
 	move(delta)
 
 func move(delta: float):
-	velocity = velocity.lerp(direction_to_food * speed, accel * delta)
+	velocity = direction_to_food * speed
 	look_at(nav.target_position)
 	move_and_slide()
