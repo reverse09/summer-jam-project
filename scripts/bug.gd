@@ -20,6 +20,7 @@ const GRAB_DISTANCE = 30
 @onready var food_container = $"../../FoodContainer"
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var area2d: Area2D = $Area2D
+@onready var fail_animation: AnimationPlayer = $Failscreen/FailAnimation
 
 var starting_position = null
 var holding_food: bool = false
@@ -115,3 +116,7 @@ func escape():
 	if holding_food:
 		wave_manager.enemy_death()
 		queue_free()
+
+func check_food():
+	if get_tree().get_nodes_in_group("food").size() == 0:
+		fail_animation.play()
