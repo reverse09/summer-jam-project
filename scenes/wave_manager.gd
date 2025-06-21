@@ -1,10 +1,12 @@
 extends Node
 
+@onready var enemy_container: Node = $"../EnemyContainer"
+
 const STARTING_FOOD = 5
 const ENEMY_TYPES = {
 	## TODO: "scene": null -> preload("res://enemies/something")
 	"fly": {
-		"scene": null,
+		"scene": preload("res://scenes/fly.tscn"),
 		"difficulty": 3,
 		"earliest_appearance": 1,
 	},
@@ -81,8 +83,8 @@ func allocate_difficulty_budget():
 		enemy_queue.append(key)
 
 func spawn_enemy(key):
-	##var enemy = ENEMY_TYPES[key].scene.instantiate()
-	## TODO: put the enemy in enemy container
+	var enemy = ENEMY_TYPES[key].scene.instantiate()
+	enemy_container.add_child(enemy)
 	print("Spawned: " + key)
 
 func win():

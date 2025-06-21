@@ -1,9 +1,45 @@
-[gd_scene load_steps=4 format=3 uid="uid://wm7uh6iipgvs"]
+[gd_scene load_steps=9 format=3 uid="uid://wm7uh6iipgvs"]
 
-[ext_resource type="Texture2D" uid="uid://di0roc6qhop0q" path="res://assets/house-fly-illustration-removebg-preview(1).png" id="1_djddo"]
 [ext_resource type="Script" uid="uid://i07xuel6kem3" path="res://scripts/fly.gd" id="1_xr3pu"]
+[ext_resource type="Texture2D" uid="uid://comefjojqmh41" path="res://assets/fly.png" id="2_xr3pu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xr3pu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lkvx"]
+atlas = ExtResource("2_xr3pu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sgyng"]
+atlas = ExtResource("2_xr3pu")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qovp"]
+atlas = ExtResource("2_xr3pu")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyt7k"]
+atlas = ExtResource("2_xr3pu")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eswn2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2lkvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sgyng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qovp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eyt7k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Fly" type="Node2D"]
 
@@ -13,9 +49,11 @@ script = ExtResource("1_xr3pu")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("RectangleShape2D_xr3pu")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+texture_filter = 1
 rotation = 1.5708
-scale = Vector2(0.0792952, 0.0792952)
-texture = ExtResource("1_djddo")
+sprite_frames = SubResource("SpriteFrames_eswn2")
+autoplay = "default"
+frame_progress = 0.260086
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="CharacterBody2D"]
