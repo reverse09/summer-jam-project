@@ -11,8 +11,9 @@ const STARTING_HEALTH = 1
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 @onready var wave_manager = $"../../WaveManager"
 
-func _physics_process(delta):
-	var direction = Vector3()
+var direction_to_food : Vector2
+
+func find_food():
 	var closest_food = null
 	var min_dist = INF
 	var fly_pos = global_position
@@ -25,13 +26,8 @@ func _physics_process(delta):
 
 	nav.target_position = closest_food.global_position
 
-	direction = nav.get_next_path_position() - global_position
-	direction = direction.normalized()
-
-	velocity = velocity.lerp(direction * speed , accel * delta)
-
-	look_at(nav.target_position)
-	move_and_slide()
+	direction_to_food = nav.get_next_path_position() - global_position
+	direction_to_food = direction_to_food.normalized()
 
 func take_damage():
 	health -= 1
