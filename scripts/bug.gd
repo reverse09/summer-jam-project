@@ -16,7 +16,7 @@ const GRAB_DISTANCE = 30
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 @onready var wave_manager = $"../../WaveManager"
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var sprite: AnimatedSprite2D = $Sprite2D
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var food_container = $"../../FoodContainer"
 
 var starting_position = null

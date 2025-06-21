@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvwai0nd61hcj"]
+[gd_scene load_steps=10 format=3 uid="uid://cvwai0nd61hcj"]
 
 [ext_resource type="PackedScene" uid="uid://4xogkc0nabjc" path="res://scenes/swatter.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://d3dujpe1kvq4o" path="res://scripts/wave_manager.gd" id="2_yqjtg"]
+[ext_resource type="AudioStream" uid="uid://c5p8ar7ynd1ud" path="res://assets/musicbuildup.wav" id="3_lbhrr"]
+[ext_resource type="AudioStream" uid="uid://dn4lmxmcso8wd" path="res://assets/musicloop.wav" id="3_lnu2h"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lnu2h"]
 load_path = "res://.godot/imported/grassybg.png-0bfb177aa31f9a0f7e060c7da1386c4b.ctex"
@@ -13,6 +15,44 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-576, -323, 576, -323, 
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lnu2h"]
 size = Vector2(135.176, 30.6746)
+
+[sub_resource type="Animation" id="Animation_iywne"]
+resource_name = "music"
+length = 22.16
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Music/MusicIntro")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_lbhrr")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WaveManager")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(22.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"start_music_loop"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p57ef"]
+_data = {
+&"music": SubResource("Animation_iywne")
+}
 
 [node name="Game" type="Node2D"]
 
@@ -48,6 +88,20 @@ navigation_polygon = SubResource("NavigationPolygon_h21dd")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FoodSpawnRegion"]
 scale = Vector2(1.32748, 4.11132)
 shape = SubResource("RectangleShape2D_lnu2h")
+
+[node name="Music" type="Node" parent="."]
+
+[node name="MusicHandler" type="AnimationPlayer" parent="Music"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_p57ef")
+}
+
+[node name="MusicIntro" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("3_lbhrr")
+
+[node name="MusicLoop" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("3_lnu2h")
 
 [connection signal="timeout" from="WaveManager/SpawnTimer" to="WaveManager" method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="WaveManager/WaveTimer" to="WaveManager" method="_on_wave_timer_timeout"]
