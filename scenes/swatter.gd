@@ -1,4 +1,5 @@
 extends StaticBody2D
+signal swatted_enemy
 
 @onready var animation_sprite = $AnimatedSprite2D
 
@@ -6,7 +7,7 @@ var mouse_position
 
 func swat():
 	animation_sprite.play("swat")
-	6
+	emit_signal("swatted_enemy")
 
 func _process(delta):
 	mouse_position = get_global_mouse_position()

@@ -14,7 +14,17 @@ position = Vector2(-2, -2)
 script = ExtResource("2_yqjtg")
 
 [node name="SpawnTimer" type="Timer" parent="WaveManager"]
+wait_time = 0.8
 
 [node name="WaveTimer" type="Timer" parent="WaveManager"]
+wait_time = 45.0
+
+[node name="InterimTimer" type="Timer" parent="WaveManager"]
+wait_time = 5.0
 
 [node name="EnemyContainer" type="Node" parent="."]
+
+[connection signal="swatted_enemy" from="Swatter" to="WaveManager" method="_on_swatter_swatted_enemy"]
+[connection signal="timeout" from="WaveManager/SpawnTimer" to="WaveManager" method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="WaveManager/WaveTimer" to="WaveManager" method="_on_wave_timer_timeout"]
+[connection signal="timeout" from="WaveManager/InterimTimer" to="WaveManager" method="_on_interim_timer_timeout"]
