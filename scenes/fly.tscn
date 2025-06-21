@@ -46,6 +46,7 @@ animations = [{
 script = ExtResource("1_xr3pu")
 speed = 200.0
 accel = 6
+wobble = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_xr3pu")
