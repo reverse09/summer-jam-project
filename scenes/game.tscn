@@ -1,17 +1,19 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvwai0nd61hcj"]
+[gd_scene load_steps=13 format=3 uid="uid://cvwai0nd61hcj"]
 
 [ext_resource type="PackedScene" uid="uid://4xogkc0nabjc" path="res://scenes/swatter.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://d3dujpe1kvq4o" path="res://scripts/wave_manager.gd" id="2_yqjtg"]
 [ext_resource type="AudioStream" uid="uid://c5p8ar7ynd1ud" path="res://assets/musicbuildup.wav" id="3_lbhrr"]
 [ext_resource type="AudioStream" uid="uid://dn4lmxmcso8wd" path="res://assets/musicloop.wav" id="3_lnu2h"]
+[ext_resource type="Script" uid="uid://bf6ppugpgd5xw" path="res://scripts/boundary.gd" id="5_iywne"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lnu2h"]
 load_path = "res://.godot/imported/grassybg.png-0bfb177aa31f9a0f7e060c7da1386c4b.ctex"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_h21dd"]
-vertices = PackedVector2Array(565.953, 314, -568.023, 314, -568.977, -315, 563.047, -315)
+vertices = PackedVector2Array(323, 243, -323, 243, -323, -243, 323, -243)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-576, -323, 576, -323, 576, 324, -578, 324)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-323, -243, 323, -243, 323, 243, -323, 243)])
+agent_radius = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lnu2h"]
 size = Vector2(135.176, 30.6746)
@@ -54,6 +56,12 @@ _data = {
 &"music": SubResource("Animation_iywne")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbhrr"]
+size = Vector2(2, 490)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p57ef"]
+size = Vector2(2, 646)
+
 [node name="Game" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -80,7 +88,6 @@ wait_time = 2.5
 [node name="FoodContainer" type="Node" parent="."]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-scale = Vector2(0.567989, 0.762752)
 navigation_polygon = SubResource("NavigationPolygon_h21dd")
 
 [node name="FoodSpawnRegion" type="Area2D" parent="."]
@@ -102,6 +109,38 @@ stream = ExtResource("3_lbhrr")
 
 [node name="MusicLoop" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("3_lnu2h")
+
+[node name="Bounds" type="Node" parent="."]
+
+[node name="BoundLeft" type="Area2D" parent="Bounds"]
+position = Vector2(-324, 0)
+script = ExtResource("5_iywne")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BoundLeft"]
+shape = SubResource("RectangleShape2D_lbhrr")
+
+[node name="BoundTop" type="Area2D" parent="Bounds"]
+position = Vector2(0, -244)
+script = ExtResource("5_iywne")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BoundTop"]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_p57ef")
+
+[node name="BoundBottom" type="Area2D" parent="Bounds"]
+position = Vector2(0, 244)
+script = ExtResource("5_iywne")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BoundBottom"]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_p57ef")
+
+[node name="BoundRight" type="Area2D" parent="Bounds"]
+position = Vector2(324, 0)
+script = ExtResource("5_iywne")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BoundRight"]
+shape = SubResource("RectangleShape2D_lbhrr")
 
 [connection signal="timeout" from="WaveManager/SpawnTimer" to="WaveManager" method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="WaveManager/WaveTimer" to="WaveManager" method="_on_wave_timer_timeout"]

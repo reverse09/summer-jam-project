@@ -94,7 +94,6 @@ func take_damage():
 		collision_shape_2d.disabled = true
 		for child in self.get_children():
 			if child is Food:
-				print("food!")
 				self.remove_child(child)
 				food_container.add_child(child)
 				child.position = self.position
@@ -104,3 +103,8 @@ func take_damage():
 
 func update_sprite():
 	sprite.material.set_shader_parameter("progress", cracking)
+
+func escape():
+	if holding_food:
+		wave_manager.enemy_death()
+		queue_free()
