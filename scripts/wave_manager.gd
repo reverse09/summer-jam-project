@@ -4,6 +4,8 @@ extends Node
 @onready var food_container: Node = $"../FoodContainer"
 @onready var food_spawn_region: Node =  $"../FoodSpawnRegion"
 @onready var music_loop: AudioStreamPlayer = $"../Music/MusicLoop"
+@onready var fail_animation: AnimationPlayer = $"../Failscreen/FailAnimation"
+@onready var game = preload("res://scenes/game.tscn")
 
 const STARTING_FOOD = 4
 const BUG_SPAWN_OFFSET = 400
@@ -39,6 +41,7 @@ var kills: int = 0
 var enemy_queue: Array = []
 var difficulty_budget: int = 0
 var wave_active: bool = false
+var failed: bool = false
 
 func _ready():
 	randomize()
@@ -73,6 +76,7 @@ func start_wave():
 	$WaveTimer.start()
 
 func _process(delta):
+	check_food()
 	if (wave_active):
 		if (kills >= enemy_count):
 			win()
@@ -162,3 +166,10 @@ func enemy_death():
 	
 	kills += 1
 	print("Kills: " + str(kills))
+
+func check_food():
+	if get_tree().get_nodes_in_group("food").size() == 0 and not failed:
+		fail_animation.play("fail")
+		failed = true
+		await get_tree().create_timer(5.0).timeout
+		get_tree().change_scene_to_packed(game)
