@@ -144,9 +144,11 @@ libraries = {
 
 [node name="MusicIntro" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("3_lbhrr")
+volume_db = -10.0
 
 [node name="MusicLoop" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("3_lnu2h")
+volume_db = -10.0
 
 [node name="Bounds" type="Node" parent="."]
 
