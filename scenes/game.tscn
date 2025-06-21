@@ -22,7 +22,6 @@ texture = SubResource("CompressedTexture2D_lnu2h")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Swatter" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(-2, -2)
 
 [node name="WaveManager" type="Node" parent="."]
 script = ExtResource("2_yqjtg")
@@ -47,7 +46,6 @@ navigation_polygon = SubResource("NavigationPolygon_h21dd")
 [node name="FoodSpawnRegion" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FoodSpawnRegion"]
-position = Vector2(0, 1)
 scale = Vector2(1.32748, 4.11132)
 shape = SubResource("RectangleShape2D_lnu2h")
 
