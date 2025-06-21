@@ -15,12 +15,15 @@ const GRAB_DISTANCE = 30
 
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 @onready var wave_manager = $"../../WaveManager"
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var sprite: AnimatedSprite2D = $Sprite2D
 @onready var food_container = $"../../FoodContainer"
 
 var starting_position = null
 var holding_food: bool = false
 var direction_to_food : Vector2
 var lifetime: float
+@export var cracking: float = 0.0
 
 func increment_lifetime(delta):
 	lifetime += delta
@@ -83,13 +86,12 @@ func run_with_food():
 
 func take_damage():
 	health -= 1
+	if (health > 0):
+		cracking += crack_coefficient
 	if (health <= 0):
-		for child in self.get_children():
-			if child is Food:
-				self.remove_child(child)
-				food_container.add_child(child)
-				child.position = self.position
-				child.search_target = true
 		self.queue_free()
 		wave_manager.enemy_death()
-	
+
+func update_sprite():
+	sprite.material.set_shader_parameter("progress", cracking)
+	pass

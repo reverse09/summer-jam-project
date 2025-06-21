@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://wm7uh6iipgvs"]
+[gd_scene load_steps=14 format=3 uid="uid://wm7uh6iipgvs"]
 
 [ext_resource type="Script" uid="uid://bj12ryfvu8pax" path="res://scripts/fly.gd" id="1_xr3pu"]
 [ext_resource type="Shader" uid="uid://b5fn67yhtooj2" path="res://scripts/crack.gdshader" id="2_2lkvx"]
@@ -8,6 +8,7 @@
 size = Vector2(30, 30)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sgyng"]
+resource_local_to_scene = true
 shader = ExtResource("2_2lkvx")
 shader_parameter/progress = 0.0
 shader_parameter/block_size = 1.0
@@ -48,6 +49,57 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_2lkvx"]
+resource_name = "crack"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:cracking")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_sgyng"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:cracking")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0qovp"]
+_data = {
+&"RESET": SubResource("Animation_sgyng"),
+&"crack": SubResource("Animation_2lkvx")
+}
+
 [node name="Fly" type="CharacterBody2D"]
 script = ExtResource("1_xr3pu")
 STARTING_SPEED = 200.0
@@ -66,3 +118,8 @@ autoplay = "default"
 frame_progress = 0.260086
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0qovp")
+}
