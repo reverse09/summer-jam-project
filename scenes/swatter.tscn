@@ -1,21 +1,38 @@
-[gd_scene load_steps=6 format=3 uid="uid://4xogkc0nabjc"]
+[gd_scene load_steps=8 format=3 uid="uid://4xogkc0nabjc"]
 
 [ext_resource type="Script" uid="uid://dr5fvsspqkugv" path="res://scenes/swatter.gd" id="1_bb5xh"]
-[ext_resource type="Texture2D" uid="uid://m1ydcnh1ppog" path="res://assets/swatter.png" id="1_olna2"]
+[ext_resource type="Texture2D" uid="uid://bis5t45psutsq" path="res://assets/swat.png" id="2_bb5xh"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bb5xh"]
-atlas = ExtResource("1_olna2")
-region = Rect2(0, 0, 612, 612)
+[sub_resource type="AtlasTexture" id="AtlasTexture_s202q"]
+atlas = ExtResource("2_bb5xh")
+region = Rect2(0, 0, 400, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjwij"]
+atlas = ExtResource("2_bb5xh")
+region = Rect2(400, 0, 400, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ua6qa"]
+atlas = ExtResource("2_bb5xh")
+region = Rect2(800, 0, 400, 500)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s202q"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bb5xh")
+"texture": SubResource("AtlasTexture_s202q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjwij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ua6qa")
+}, {
+"duration": 1.0,
+"texture": null
 }],
-"loop": true,
-"name": &"default",
-"speed": 5.0
+"loop": false,
+"name": &"swat",
+"speed": 20.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cjwij"]
@@ -27,6 +44,7 @@ script = ExtResource("1_bb5xh")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.15768, 0.151552)
 sprite_frames = SubResource("SpriteFrames_s202q")
+animation = &"swat"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_cjwij")
