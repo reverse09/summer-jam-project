@@ -18,6 +18,7 @@ const GRAB_DISTANCE = 30
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var food_container = $"../../FoodContainer"
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 var starting_position = null
 var holding_food: bool = false
@@ -47,7 +48,7 @@ func find_food():
 			continue
 		var dist = fly_pos.distance_to(food.global_position)
 		if dist < GRAB_DISTANCE:
-			food.get_child(0).disabled = true
+			food.collision_shape_2d.disabled = true
 			food.get_parent().remove_child(food)
 			food.position = Vector2.ZERO
 			self.add_child(food)
@@ -89,8 +90,10 @@ func take_damage():
 	if (health > 0):
 		cracking += crack_coefficient
 	if (health <= 0):
+		holding_food = true
 		for child in self.get_children():
 			if child is Food:
+				print("food!")
 				self.remove_child(child)
 				food_container.add_child(child)
 				child.position = self.position

@@ -8,6 +8,7 @@
 size = Vector2(32, 34)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vwwlv"]
+resource_local_to_scene = true
 shader = ExtResource("2_rwtl0")
 shader_parameter/progress = 0.0
 shader_parameter/block_size = 1.0
