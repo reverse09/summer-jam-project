@@ -13,9 +13,12 @@ signal bug_died
 
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 @onready var wave_manager = $"../../WaveManager"
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var sprite: AnimatedSprite2D = $Sprite2D
 
 var direction_to_food : Vector2
 var lifetime: float
+@export var cracking: float = 0.0
 
 func increment_lifetime(delta):
 	lifetime += delta
@@ -43,7 +46,12 @@ func wobble_bug():
 
 func take_damage():
 	health -= 1
+	if (health > 0):
+		cracking += crack_coefficient
 	if (health <= 0):
-		self.queue_free()
+		animation_player.play("crack")
 		wave_manager.enemy_death()
-	
+
+func update_sprite():
+	sprite.material.set_shader_parameter("progress", cracking)
+	pass
