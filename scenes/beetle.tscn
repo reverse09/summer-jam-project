@@ -44,6 +44,7 @@ size = Vector2(32, 30)
 
 [node name="Beetle" type="CharacterBody2D"]
 script = ExtResource("1_g2qrh")
+health = 4
 STARTING_HEALTH = 5
 accel = 2
 
