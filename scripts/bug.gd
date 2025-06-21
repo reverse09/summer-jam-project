@@ -1,7 +1,8 @@
+class_name Bug
 extends CharacterBody2D
 
-var speed = 100.0
-var accel = 4
+@export var speed = 100.0
+@export var accel = 4
 
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 

@@ -1,9 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://wm7uh6iipgvs"]
 
-[ext_resource type="Script" uid="uid://i07xuel6kem3" path="res://scripts/fly.gd" id="1_xr3pu"]
+[ext_resource type="Script" uid="uid://i07xuel6kem3" path="res://scripts/bug.gd" id="1_xr3pu"]
 [ext_resource type="Texture2D" uid="uid://comefjojqmh41" path="res://assets/fly.png" id="2_xr3pu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xr3pu"]
+size = Vector2(30, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2lkvx"]
 atlas = ExtResource("2_xr3pu")
@@ -41,19 +42,17 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Fly" type="Node2D"]
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Fly" type="CharacterBody2D"]
 script = ExtResource("1_xr3pu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_xr3pu")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_eswn2")
 autoplay = "default"
 frame_progress = 0.260086
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="CharacterBody2D"]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
