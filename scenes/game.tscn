@@ -8,9 +8,3 @@
 
 [node name="Swatter" parent="." instance=ExtResource("1_uwrxv")]
 position = Vector2(-2, -2)
-
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -578.0
-offset_top = -323.0
-offset_right = 574.0
-offset_bottom = 324.0

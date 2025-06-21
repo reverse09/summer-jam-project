@@ -1,17 +1,17 @@
 [gd_scene load_steps=8 format=3 uid="uid://4xogkc0nabjc"]
 
 [ext_resource type="Script" uid="uid://dr5fvsspqkugv" path="res://scenes/swatter.gd" id="1_bb5xh"]
-[ext_resource type="Texture2D" uid="uid://bis5t45psutsq" path="res://assets/swat.png" id="2_bb5xh"]
+[ext_resource type="Texture2D" uid="uid://d371ftd04g3vn" path="res://assets/swat.png" id="2_bb5xh"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s202q"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bb5xh"]
 atlas = ExtResource("2_bb5xh")
 region = Rect2(0, 0, 400, 500)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cjwij"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_s202q"]
 atlas = ExtResource("2_bb5xh")
 region = Rect2(400, 0, 400, 500)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ua6qa"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjwij"]
 atlas = ExtResource("2_bb5xh")
 region = Rect2(800, 0, 400, 500)
 
@@ -19,20 +19,23 @@ region = Rect2(800, 0, 400, 500)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bb5xh")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_s202q")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cjwij")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ua6qa")
-}, {
-"duration": 1.0,
 "texture": null
 }],
 "loop": false,
 "name": &"swat",
-"speed": 20.0
+"speed": 40.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cjwij"]
