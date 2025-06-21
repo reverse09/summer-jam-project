@@ -15,7 +15,7 @@ const ENEMY_TYPES = {
 		"earliest_appearance": 1,
 	},
 	"beetle": {
-		"scene": null,
+		"scene": preload("res://scenes/beetle.tscn"),
 		"difficulty": 5,
 		"earliest_appearance": 2,
 	},

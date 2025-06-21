@@ -3,10 +3,10 @@ extends CharacterBody2D
 
 signal bug_died
 
-const STARTING_HEALTH = 1
+@export var STARTING_HEALTH = 1
 @export var speed = 100.0
 @export var accel = 4
-@export var health = STARTING_HEALTH
+@onready var health = STARTING_HEALTH
 
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 @onready var wave_manager = $"../../WaveManager"
