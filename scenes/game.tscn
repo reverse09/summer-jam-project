@@ -27,13 +27,13 @@ texture = SubResource("CompressedTexture2D_lnu2h")
 script = ExtResource("2_yqjtg")
 
 [node name="SpawnTimer" type="Timer" parent="WaveManager"]
-wait_time = 0.8
+wait_time = 0.4
 
 [node name="WaveTimer" type="Timer" parent="WaveManager"]
 wait_time = 45.0
 
 [node name="InterimTimer" type="Timer" parent="WaveManager"]
-wait_time = 5.0
+wait_time = 2.5
 
 [node name="EnemyContainer" type="Node" parent="."]
 

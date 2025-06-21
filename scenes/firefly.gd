@@ -1,4 +1,5 @@
 extends Bug
+	
 
 func _physics_process(delta):
 	increment_lifetime(delta)

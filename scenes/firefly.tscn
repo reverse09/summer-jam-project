@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://dtfpvbmpgv14"]
+
+[ext_resource type="Script" uid="uid://dbpnvu1jw8ili" path="res://scenes/firefly.gd" id="1_oqngd"]
+[ext_resource type="Texture2D" uid="uid://bot587hau8ett" path="res://assets/firefly.png" id="2_fjwvr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qoos8"]
+size = Vector2(32, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7aac"]
+atlas = ExtResource("2_fjwvr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prqgs"]
+atlas = ExtResource("2_fjwvr")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhdb3"]
+atlas = ExtResource("2_fjwvr")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jf0mf"]
+atlas = ExtResource("2_fjwvr")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_axgoa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7aac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prqgs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhdb3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jf0mf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Firefly" type="CharacterBody2D"]
+script = ExtResource("1_oqngd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_qoos8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_axgoa")
+autoplay = "default"
+frame = 1
+frame_progress = 0.889536
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

@@ -19,9 +19,9 @@ const ENEMY_TYPES = {
 		"difficulty": 5,
 		"earliest_appearance": 2,
 	},
-	"spider": {
-		"scene": null,
-		"difficulty": 6,
+	"firefly": {
+		"scene": preload("res://scenes/firefly.tscn"),
+		"difficulty": 5,
 		"earliest_appearance": 4,
 	}
 }

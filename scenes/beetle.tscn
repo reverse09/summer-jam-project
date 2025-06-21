@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://dwvxlnjchmrli"]
 
-[ext_resource type="Script" uid="uid://bj12ryfvu8pax" path="res://scripts/fly.gd" id="1_g2qrh"]
-[ext_resource type="Shader" path="res://scripts/crack.gdshader" id="1_w5j00"]
+[ext_resource type="Script" uid="uid://ful4yfpkhhem" path="res://scripts/beetle.gd" id="1_c3xpc"]
+[ext_resource type="Shader" uid="uid://b5fn67yhtooj2" path="res://scripts/crack.gdshader" id="1_w5j00"]
 [ext_resource type="Texture2D" uid="uid://wxflidp05r6y" path="res://assets/beetle.png" id="2_g2qrh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w5j00"]
@@ -49,11 +49,7 @@ animations = [{
 size = Vector2(32, 30)
 
 [node name="Beetle" type="CharacterBody2D"]
-script = ExtResource("1_g2qrh")
-STARTING_HEALTH = 5
-accel = 2
-wobble = 20
-wobble_period = 5
+script = ExtResource("1_c3xpc")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -61,7 +57,8 @@ material = SubResource("ShaderMaterial_w5j00")
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_miimq")
 autoplay = "default"
-frame_progress = 0.594693
+frame = 3
+frame_progress = 0.820603
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 

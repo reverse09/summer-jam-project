@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://gftqrrgj8ea1"]
+[gd_scene load_steps=4 format=3 uid="uid://gftqrrgj8ea1"]
 
+[ext_resource type="Script" uid="uid://drrrwv461tiqw" path="res://scripts/food.gd" id="1_af40f"]
 [ext_resource type="Texture2D" uid="uid://bwqe7dui2ps2b" path="res://assets/fried-chicken-leg-piece-on-transparent-background-png.png" id="1_xven1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af40f"]
 size = Vector2(24, 22)
 
 [node name="Food" type="StaticBody2D" groups=["food"]]
+script = ExtResource("1_af40f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_af40f")
