@@ -96,7 +96,6 @@ root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_p57ef")
 }
-autoplay = "music"
 
 [node name="MusicIntro" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("3_lbhrr")

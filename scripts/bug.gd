@@ -91,6 +91,7 @@ func take_damage():
 		cracking += crack_coefficient
 	if (health <= 0):
 		holding_food = true
+		collision_shape_2d.disabled = true
 		for child in self.get_children():
 			if child is Food:
 				print("food!")
