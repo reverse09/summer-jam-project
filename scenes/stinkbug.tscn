@@ -8,6 +8,7 @@
 radius = 15.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6srol"]
+resource_local_to_scene = true
 shader = ExtResource("2_fha0a")
 shader_parameter/progress = 0.0
 shader_parameter/block_size = 1.0
