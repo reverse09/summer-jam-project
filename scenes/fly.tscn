@@ -1,10 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://wm7uh6iipgvs"]
+[gd_scene load_steps=11 format=3 uid="uid://wm7uh6iipgvs"]
 
 [ext_resource type="Script" uid="uid://bj12ryfvu8pax" path="res://scripts/fly.gd" id="1_xr3pu"]
+[ext_resource type="Shader" uid="uid://b5fn67yhtooj2" path="res://scripts/crack.gdshader" id="2_2lkvx"]
 [ext_resource type="Texture2D" uid="uid://comefjojqmh41" path="res://assets/fly.png" id="2_xr3pu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xr3pu"]
 size = Vector2(30, 30)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sgyng"]
+shader = ExtResource("2_2lkvx")
+shader_parameter/progress = 0.0
+shader_parameter/block_size = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2lkvx"]
 atlas = ExtResource("2_xr3pu")
@@ -53,6 +59,7 @@ shape = SubResource("RectangleShape2D_xr3pu")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+material = SubResource("ShaderMaterial_sgyng")
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_eswn2")
 autoplay = "default"

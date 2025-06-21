@@ -9,6 +9,7 @@ signal bug_died
 @export var accel = 4
 @export var wobble = 10
 @export var wobble_period = 2
+@export var crack_coefficient = 0.1
 
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 @onready var wave_manager = $"../../WaveManager"
