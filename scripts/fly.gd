@@ -1,7 +1,11 @@
 extends Bug
 
+
 func _physics_process(delta):
+	increment_lifetime(delta)
 	find_food()
+	wobble_bug()
+	
 	move(delta)
 
 func move(delta: float):

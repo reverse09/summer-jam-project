@@ -3,16 +3,22 @@ extends CharacterBody2D
 
 signal bug_died
 
-const STARTING_HEALTH = 1
+@export var STARTING_HEALTH = 1
+@onready var health = STARTING_HEALTH
 @export var speed = 100.0
 @export var accel = 4
-@export var health = STARTING_HEALTH
+@export var wobble = 10
+@export var wobble_period = 2
 @export var crack_coefficient = 0.1
 
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 @onready var wave_manager = $"../../WaveManager"
 
 var direction_to_food : Vector2
+var lifetime: float
+
+func increment_lifetime(delta):
+	lifetime += delta
 
 func find_food():
 	var closest_food = null
@@ -29,6 +35,11 @@ func find_food():
 
 	direction_to_food = nav.get_next_path_position() - global_position
 	direction_to_food = direction_to_food.normalized()
+	
+func wobble_bug():
+	var scalar = sin(lifetime * (2 * PI) / wobble_period)
+	var perpendicular = Vector2(-direction_to_food.y, direction_to_food.x)
+	direction_to_food = (direction_to_food + perpendicular * scalar).normalized()
 
 func take_damage():
 	health -= 1
