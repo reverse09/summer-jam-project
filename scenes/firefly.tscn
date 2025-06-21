@@ -1,10 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://dtfpvbmpgv14"]
+[gd_scene load_steps=14 format=3 uid="uid://dtfpvbmpgv14"]
 
 [ext_resource type="Script" uid="uid://dbpnvu1jw8ili" path="res://scenes/firefly.gd" id="1_oqngd"]
 [ext_resource type="Texture2D" uid="uid://bot587hau8ett" path="res://assets/firefly.png" id="2_fjwvr"]
+[ext_resource type="Shader" uid="uid://b5fn67yhtooj2" path="res://scripts/crack.gdshader" id="2_rwtl0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qoos8"]
 size = Vector2(32, 34)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vwwlv"]
+resource_local_to_scene = true
+shader = ExtResource("2_rwtl0")
+shader_parameter/progress = 0.0
+shader_parameter/block_size = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o7aac"]
 atlas = ExtResource("2_fjwvr")
@@ -103,6 +110,7 @@ rotation = 1.5708
 shape = SubResource("RectangleShape2D_qoos8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_vwwlv")
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_axgoa")
 autoplay = "default"

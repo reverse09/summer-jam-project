@@ -3,6 +3,7 @@ extends Node
 @onready var enemy_container: Node = $"../EnemyContainer"
 @onready var food_container: Node = $"../FoodContainer"
 @onready var food_spawn_region: Node =  $"../FoodSpawnRegion"
+@onready var music_loop: AudioStreamPlayer = $"../Music/MusicLoop"
 
 const STARTING_FOOD = 4
 const BUG_SPAWN_OFFSET = 350
@@ -38,6 +39,9 @@ func _ready():
 	randomize()
 	spawn_food()
 	start_wave()
+
+func start_music_loop():
+	music_loop.play()
 
 func spawn_food():
 	var rect = food_spawn_region.get_child(0).shape.get_rect()
