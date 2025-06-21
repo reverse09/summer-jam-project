@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cvwai0nd61hcj"]
 
 [ext_resource type="PackedScene" uid="uid://4xogkc0nabjc" path="res://scenes/swatter.tscn" id="1_uwrxv"]
-[ext_resource type="Script" uid="uid://d3dujpe1kvq4o" path="res://scenes/wave_manager.gd" id="2_yqjtg"]
+[ext_resource type="Script" uid="uid://d3dujpe1kvq4o" path="res://scripts/wave_manager.gd" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://gftqrrgj8ea1" path="res://scenes/food.tscn" id="3_btr28"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lnu2h"]

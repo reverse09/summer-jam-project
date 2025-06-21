@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://4xogkc0nabjc"]
 
-[ext_resource type="Script" uid="uid://dr5fvsspqkugv" path="res://scenes/swatter.gd" id="1_bb5xh"]
+[ext_resource type="Script" uid="uid://dr5fvsspqkugv" path="res://scripts/swatter.gd" id="1_bb5xh"]
 [ext_resource type="Texture2D" uid="uid://d371ftd04g3vn" path="res://assets/swat.png" id="2_bb5xh"]
 [ext_resource type="AudioStream" uid="uid://7aii4wa55xyl" path="res://assets/swat.wav" id="3_s202q"]
 
