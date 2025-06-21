@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://wm7uh6iipgvs"]
 
-[ext_resource type="Script" uid="uid://bj12ryfvu8pax" path="res://scripts/fly.gd" id="1_xr3pu"]
+[ext_resource type="Script" path="res://scripts/fly.gd" id="1_xr3pu"]
 [ext_resource type="Texture2D" uid="uid://comefjojqmh41" path="res://assets/fly.png" id="2_xr3pu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xr3pu"]
