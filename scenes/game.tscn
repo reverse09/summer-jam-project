@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvwai0nd61hcj"]
+[gd_scene load_steps=3 format=3 uid="uid://cvwai0nd61hcj"]
 
 [ext_resource type="PackedScene" uid="uid://4xogkc0nabjc" path="res://scenes/swatter.tscn" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://d3dujpe1kvq4o" path="res://scenes/wave_manager.gd" id="2_yqjtg"]
 
 [node name="Game" type="Node2D"]
 
@@ -8,3 +9,12 @@
 
 [node name="Swatter" parent="." instance=ExtResource("1_uwrxv")]
 position = Vector2(-2, -2)
+
+[node name="WaveManager" type="Node" parent="."]
+script = ExtResource("2_yqjtg")
+
+[node name="SpawnTimer" type="Timer" parent="WaveManager"]
+
+[node name="WaveTimer" type="Timer" parent="WaveManager"]
+
+[node name="EnemyContainer" type="Node" parent="."]
