@@ -11,10 +11,16 @@ config_version=5
 [application]
 
 config/name="Summer Jam Project"
+run/main_scene="uid://cvwai0nd61hcj"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[global_group]
+
+food=""
 
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
