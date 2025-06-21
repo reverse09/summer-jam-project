@@ -5,6 +5,7 @@ extends Node
 @onready var food_spawn_region: Node =  $"../FoodSpawnRegion"
 
 const STARTING_FOOD = 4
+const BUG_SPAWN_OFFSET = 350
 const FOOD_SCENE = preload("res://scenes/food.tscn")
 const ENEMY_TYPES = {
 	## TODO: "scene": null -> preload("res://enemies/something")
@@ -98,6 +99,8 @@ func allocate_difficulty_budget():
 
 func spawn_enemy(key):
 	var enemy = ENEMY_TYPES[key].scene.instantiate()
+	var position = Vector2.RIGHT.rotated(randf() * TAU) * BUG_SPAWN_OFFSET
+	enemy.position = position
 	enemy_container.add_child(enemy)
 	print("Spawned: " + key)
 
