@@ -1,9 +1,11 @@
 [gd_scene load_steps=6 format=3 uid="uid://cvwai0nd61hcj"]
 
-[ext_resource type="Texture2D" uid="uid://bt8ssbsd7sw4f" path="res://assets/grassybg.png" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://4xogkc0nabjc" path="res://scenes/swatter.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://d3dujpe1kvq4o" path="res://scenes/wave_manager.gd" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://gftqrrgj8ea1" path="res://scenes/food.tscn" id="3_btr28"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lnu2h"]
+load_path = "res://.godot/imported/grassybg.png-0bfb177aa31f9a0f7e060c7da1386c4b.ctex"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_h21dd"]
 vertices = PackedVector2Array(565.953, 314, -568.023, 314, -568.977, -315, 563.047, -315)
@@ -13,7 +15,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-576, -323, 576, -323, 
 [node name="Game" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_lbhrr")
+texture = SubResource("CompressedTexture2D_lnu2h")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
