@@ -1,0 +1,131 @@
+[gd_scene load_steps=15 format=3 uid="uid://b2pshiy2rjvlp"]
+
+[ext_resource type="Script" uid="uid://c8rocwsigsttj" path="res://scripts/spider.gd" id="1_algeo"]
+[ext_resource type="Texture2D" uid="uid://dkuklty21ex2b" path="res://assets/spider.png" id="1_c7em6"]
+[ext_resource type="Shader" uid="uid://b5fn67yhtooj2" path="res://scripts/crack.gdshader" id="2_k5hg5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d613k"]
+shader = ExtResource("2_k5hg5")
+shader_parameter/progress = 0.0
+shader_parameter/block_size = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_algeo"]
+atlas = ExtResource("1_c7em6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5hg5"]
+atlas = ExtResource("1_c7em6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d613k"]
+atlas = ExtResource("1_c7em6")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evcmw"]
+atlas = ExtResource("1_c7em6")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_txxy0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_algeo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5hg5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d613k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evcmw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wdplg"]
+radius = 14.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_047qd"]
+size = Vector2(29, 20)
+
+[sub_resource type="Animation" id="Animation_sgyng"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:cracking")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_2lkvx"]
+resource_name = "crack"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:cracking")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0qovp"]
+_data = {
+&"RESET": SubResource("Animation_sgyng"),
+&"crack": SubResource("Animation_2lkvx")
+}
+
+[node name="Spider" type="CharacterBody2D"]
+script = ExtResource("1_algeo")
+STARTING_SPEED = 350.0
+wobble = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_d613k")
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_txxy0")
+autoplay = "default"
+frame_progress = 0.3388
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wdplg")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_047qd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0qovp")
+}

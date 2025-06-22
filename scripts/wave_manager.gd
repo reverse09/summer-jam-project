@@ -26,11 +26,16 @@ const ENEMY_TYPES = {
 	"firefly": {
 		"scene": preload("res://scenes/firefly.tscn"),
 		"difficulty": 5,
-		"earliest_appearance": 4,
+		"earliest_appearance": 6,
 	},
 	"stinkbug": {
 		"scene": preload("res://scenes/stinkbug.tscn"),
 		"difficulty": 5,
+		"earliest_appearance": 8,
+	},
+	"spider": {
+		"scene": preload("res://scenes/spider.tscn"),
+		"difficulty": 4,
 		"earliest_appearance": 4,
 	}
 }
