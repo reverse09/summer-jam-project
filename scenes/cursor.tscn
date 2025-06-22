@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dswraod0slvk6"]
+
+[sub_resource type="GDScript" id="GDScript_d7ugn"]
+script/source = "extends Sprite2D
+
+@onready var swatter = $\"../../Swatter\"
+
+func _process(delta: float) -> void:
+	position = swatter.position
+"
+
+[node name="Cursor" type="Sprite2D"]
+script = SubResource("GDScript_d7ugn")
