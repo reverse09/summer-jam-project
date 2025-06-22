@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var game : PackedScene = preload("res://scenes/game.tscn")
-var input_enabled : bool = false
+var input_enabled : bool = true
 
 func enable_input():
 	input_enabled = true

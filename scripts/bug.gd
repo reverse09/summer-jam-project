@@ -95,7 +95,7 @@ func run_with_food():
 			
 	
 	if (speed == STARTING_SPEED):
-		var factor = (1.0/12.0 + (1.0/80.0) * (wave_manager.wave + 1.0))
+		var factor = (1.0/12.0 + (1.0/100.0) * (wave_manager.wave + 1.0))
 		print(factor)
 		speed = STARTING_SPEED * factor
 	
