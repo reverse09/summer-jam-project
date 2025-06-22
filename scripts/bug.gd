@@ -4,7 +4,8 @@ extends CharacterBody2D
 signal bug_died
 
 const GRAB_DISTANCE = 35
-const SWITCH_POSITION_DISTANCE = 50
+const SWITCH_POSITION_MAX_DISTANCE = 100
+const SWITCH_POSITION_MIN_DISTANCE = 300
 @export var STARTING_HEALTH = 1
 @onready var health = STARTING_HEALTH
 @export var STARTING_SPEED = 100.0
@@ -60,7 +61,7 @@ func find_food():
 			closest_food = food
 	
 	if (closest_food == null):
-		if (position.distance_to(nav.target_position) < SWITCH_POSITION_DISTANCE):
+		if (position.distance_to(nav.target_position) < SWITCH_POSITION_MAX_DISTANCE or position.distance_to(nav.target_position) > SWITCH_POSITION_MIN_DISTANCE):
 			nav.target_position = Vector2(randi() % 300 - 150, randi() % 300 - 150)
 	else:
 		nav.target_position = closest_food.global_position

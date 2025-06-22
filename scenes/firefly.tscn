@@ -110,7 +110,7 @@ wobble = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
-scale = Vector2(1.46122, 1.61969)
+scale = Vector2(0.94122, 1.33969)
 shape = SubResource("CircleShape2D_fjwvr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -178,14 +178,16 @@ shape = SubResource("RectangleShape2D_lnu2h")
 [node name="Bounds" type="Node" parent="."]
 
 [node name="BoundLeft" type="Area2D" parent="Bounds"]
-position = Vector2(-324, 0)
+position = Vector2(-333, 0)
+scale = Vector2(5.03999, 1.08)
 script = ExtResource("5_iywne")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BoundLeft"]
 shape = SubResource("RectangleShape2D_lbhrr")
 
 [node name="BoundTop" type="Area2D" parent="Bounds"]
-position = Vector2(0, -244)
+position = Vector2(3, -258)
+scale = Vector2(1.04, 5.52)
 script = ExtResource("5_iywne")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BoundTop"]
@@ -193,7 +195,8 @@ rotation = 1.5708
 shape = SubResource("RectangleShape2D_p57ef")
 
 [node name="BoundBottom" type="Area2D" parent="Bounds"]
-position = Vector2(0, 244)
+position = Vector2(0, 251)
+scale = Vector2(1.04, 4.4)
 script = ExtResource("5_iywne")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BoundBottom"]
@@ -201,7 +204,8 @@ rotation = 1.5708
 shape = SubResource("RectangleShape2D_p57ef")
 
 [node name="BoundRight" type="Area2D" parent="Bounds"]
-position = Vector2(324, 0)
+position = Vector2(335, 0)
+scale = Vector2(5.37513, 1.04)
 script = ExtResource("5_iywne")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BoundRight"]

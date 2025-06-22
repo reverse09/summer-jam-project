@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Summer Jam Project"
-run/main_scene="uid://cvwai0nd61hcj"
+run/main_scene="uid://d1mwdj8tkjgov"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
