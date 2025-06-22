@@ -169,7 +169,7 @@ text = "[center]123[/center]"
 [node name="FoodContainer" type="Node" parent="."]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-scale = Vector2(1.05642, 1.04006)
+scale = Vector2(1.09642, 1.0735)
 navigation_polygon = SubResource("NavigationPolygon_h21dd")
 
 [node name="FoodSpawnRegion" type="Area2D" parent="."]

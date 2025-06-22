@@ -1,8 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://bm0y45t0mqsyu"]
+[gd_scene load_steps=4 format=3 uid="uid://bm0y45t0mqsyu"]
 
 [ext_resource type="PackedScene" uid="uid://wm7uh6iipgvs" path="res://scenes/fly.tscn" id="1_errlg"]
+[ext_resource type="Shader" uid="uid://b5fn67yhtooj2" path="res://scripts/crack.gdshader" id="2_bl13t"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iyx0m"]
+resource_local_to_scene = true
+shader = ExtResource("2_bl13t")
+shader_parameter/progress = 0.0
+shader_parameter/block_size = 1.0
 
 [node name="Fly" instance=ExtResource("1_errlg")]
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(16.5, 0)
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_iyx0m")

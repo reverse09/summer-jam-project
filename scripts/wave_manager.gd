@@ -37,7 +37,7 @@ const ENEMY_TYPES = {
 	},
 	"spider": {
 		"scene": preload("res://scenes/spider.tscn"),
-		"difficulty": 4,
+		"difficulty": 6,
 		"earliest_appearance": 4,
 	}
 }

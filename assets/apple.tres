@@ -1,0 +1,59 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://fbih30utr7je"]
+
+[ext_resource type="Texture2D" uid="uid://svj4im7gv2l0" path="res://assets/apple.png" id="1_ylly2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpjvo"]
+atlas = ExtResource("1_ylly2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfsi6"]
+atlas = ExtResource("1_ylly2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oi3d0"]
+atlas = ExtResource("1_ylly2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2in7"]
+atlas = ExtResource("1_ylly2")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcxlo"]
+atlas = ExtResource("1_ylly2")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fpe72"]
+atlas = ExtResource("1_ylly2")
+region = Rect2(160, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpjvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpjvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpjvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfsi6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oi3d0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2in7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcxlo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fpe72")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

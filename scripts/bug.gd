@@ -22,19 +22,17 @@ const SWITCH_POSITION_DISTANCE = 50
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var area2d: Area2D = $Area2D
 
-var starting_position = null
+var exit_position = null
 var holding_food: bool = false
 var direction_to_food : Vector2
 var lifetime: float
+var exits: Array[Vector2] = [Vector2(400, 0), Vector2(400, 350), Vector2(0, 350), Vector2(-400, 350), Vector2(-400, 0), Vector2(-400, -350), Vector2(0, -350), Vector2(400, -350)]
 @export var cracking: float = 0.0
 
 func increment_lifetime(delta):
 	lifetime += delta
 
 func find_food():
-	if (starting_position == null):
-		starting_position = self.position
-	
 	if (holding_food):
 		return
 	
@@ -82,9 +80,19 @@ func wobble_bug():
 func run_with_food():
 	if (!holding_food):
 		return
+	if (exit_position == null):
+		var distance = INF
+		for exit in exits:
+			var current = self.position.distance_to(exit)
+			if (current < distance):
+				exit_position = exit
+				distance = current
+			
+	
 	if (speed == STARTING_SPEED):
-		speed = STARTING_SPEED / 4
-	nav.target_position = starting_position
+		speed = STARTING_SPEED / 12
+	
+	nav.target_position = exit_position
 	direction_to_food = nav.get_next_path_position() - global_position
 	direction_to_food = direction_to_food.normalized()
 
