@@ -5,7 +5,6 @@ extends Node
 @onready var enemy_container: Node = $"../EnemyContainer"
 @onready var food_container: Node = $"../FoodContainer"
 @onready var food_spawn_region: Node =  $"../FoodSpawnRegion"
-@onready var music_loop: AudioStreamPlayer = $"../Music/MusicLoop"
 @onready var fail_animation: AnimationPlayer = $"../Failscreen/FailAnimation"
 @onready var game = preload("res://scenes/game.tscn")
 @onready var number_label: RichTextLabel = $NumberLabel
@@ -56,9 +55,6 @@ func _ready():
 	randomize()
 	spawn_food()
 	start_wave()
-
-func start_music_loop():
-	music_loop.play()
 
 func spawn_food():
 	var rect = food_spawn_region.get_child(0).shape.get_rect()

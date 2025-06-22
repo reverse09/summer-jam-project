@@ -1,5 +1,6 @@
 [gd_scene load_steps=35 format=3 uid="uid://cvwai0nd61hcj"]
 
+[ext_resource type="Texture2D" uid="uid://7wvadtfh154d" path="res://assets/grassybg2.png" id="1_37s47"]
 [ext_resource type="Script" uid="uid://i1jkdr76usqk" path="res://scripts/camera_shake.gd" id="1_ir15t"]
 [ext_resource type="PackedScene" uid="uid://4xogkc0nabjc" path="res://scenes/swatter.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://d3dujpe1kvq4o" path="res://scripts/wave_manager.gd" id="2_yqjtg"]
@@ -21,9 +22,6 @@
 [ext_resource type="Shader" uid="uid://b44iiitfsokvp" path="res://resources/displacementless.gdshader" id="17_264po"]
 [ext_resource type="Texture2D" uid="uid://x4fmiybj2ta8" path="res://assets/warning.png" id="17_rysoc"]
 [ext_resource type="Texture2D" uid="uid://bg7dv7rvvrkfy" path="res://assets/warningtext.png" id="19_1kice"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lnu2h"]
-load_path = "res://.godot/imported/grassybg.png-0bfb177aa31f9a0f7e060c7da1386c4b.ctex"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_h21dd"]
 vertices = PackedVector2Array(325, 245, -325, 245, -325, -245, 325, -245)
@@ -121,8 +119,7 @@ shader_parameter/seed = 42.0
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(-4, -4.00001)
-scale = Vector2(1.125, 1.14583)
-texture = SubResource("CompressedTexture2D_lnu2h")
+texture = ExtResource("1_37s47")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 rotation = 0.0139827
