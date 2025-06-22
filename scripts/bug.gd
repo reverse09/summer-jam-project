@@ -51,8 +51,7 @@ func find_food():
 		if dist < GRAB_DISTANCE:
 			food.collision_shape_2d.disabled = true
 			food.get_parent().remove_child(food)
-			food.position = Vector2.ZERO
-			food.position.y -= 1
+			food.position = Vector2(-10, 0)
 			self.add_child(food)
 			food.search_target = false
 			holding_food = true
@@ -92,7 +91,7 @@ func run_with_food():
 			
 	
 	if (speed == STARTING_SPEED):
-		var factor = (1/12 + (1/80) * wave_manager.wave)
+		var factor = (1.0/12.0 + (1.0/80.0) * (wave_manager.wave + 1.0))
 		print(factor)
 		speed = STARTING_SPEED * factor
 	
