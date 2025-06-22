@@ -81,6 +81,10 @@ func wobble_bug():
 func run_with_food():
 	if (!holding_food):
 		return
+	
+	if (self.position.x > 325 or self.position.x < -325 or self.position.y > 240 or self.position.y < -240):
+		self.escape()
+	
 	if (exit_position == null):
 		var distance = INF
 		for exit in exits:
