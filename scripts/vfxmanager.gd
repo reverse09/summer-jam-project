@@ -8,10 +8,13 @@ var intensity = 0
 @export var screen_cracks_1 : Node2D
 @export var screen_cracks_2 : Node2D
 @export var screen_cracks_3 : Node2D
+@export var screen_cracks_4 : Node2D
+@export var warning : Sprite2D
 
 @export var sfx_stream : AudioStreamPlayer
 @export var music_loop : AudioStreamPlayer
 @export var voice_stream : AudioStreamPlayer
+@export var warning_stream : AudioStreamPlayer
 
 var bug_kill_lines = [
 	preload("res://sounds/voice lines/bug kill 1.WAV"),
@@ -65,6 +68,8 @@ func update_cracks():
 		screen_cracks_3.visible = true
 		music_loop.stream = load("res://sounds/Music Stage 4.mp3")
 	elif intensity == 4:
+		screen_cracks_3.visible = false
+		screen_cracks_4.visible = true
 		music_loop.stream = load("res://sounds/Game Over Music.wav")
 	music_loop.play()
 
@@ -97,3 +102,9 @@ func play_food_loss_line():
 	var random_index = randi() % food_loss_lines.size()
 	voice_stream.stream = food_loss_lines[random_index]
 	voice_stream.play()
+
+func show_warning():
+	warning_stream.play()
+	warning.visible = true
+	await get_tree().create_timer(3.0).timeout
+	warning.visible = false

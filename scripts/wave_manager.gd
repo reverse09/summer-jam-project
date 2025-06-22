@@ -187,5 +187,5 @@ func fail():
 	$WaveTimer.stop()
 	fail_animation.play("fail")
 	failed = true
-	await get_tree().create_timer(5.0).timeout
+	await get_tree().create_timer(10.0).timeout
 	get_tree().change_scene_to_packed(game)

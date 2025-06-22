@@ -119,4 +119,5 @@ func escape():
 		wave_manager.enemy_death()
 		wave_manager.vfx.play_sound("losefood.wav")
 		wave_manager.vfx.play_food_loss_line()
+		wave_manager.vfx.show_warning()
 		queue_free()
