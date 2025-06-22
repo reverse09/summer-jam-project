@@ -130,10 +130,8 @@ func win():
 func lose():
 	if (!wave_active):
 		return
-		
-	$SpawnTimer.stop()
-	$WaveTimer.stop()
 	print("Ran out of time :(")
+	fail()
 
 func _on_spawn_timer_timeout() -> void:
 	if (!wave_active):
@@ -169,7 +167,13 @@ func enemy_death():
 
 func check_food():
 	if get_tree().get_nodes_in_group("food").size() == 0 and not failed:
-		fail_animation.play("fail")
-		failed = true
-		await get_tree().create_timer(5.0).timeout
-		get_tree().change_scene_to_packed(game)
+		fail()
+
+func fail():
+	wave_active = false
+	$SpawnTimer.stop()
+	$WaveTimer.stop()
+	fail_animation.play("fail")
+	failed = true
+	await get_tree().create_timer(5.0).timeout
+	get_tree().change_scene_to_packed(game)
