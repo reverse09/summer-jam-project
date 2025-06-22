@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dtqhae7bt4n55"
+path="res://.godot/imported/bug kill 5.WAV-a9c1c0462760a315cb8aa7f4997e51c3.sample"
+
+[deps]
+
+source_file="res://sounds/voice lines/bug kill 5.WAV"
+dest_files=["res://.godot/imported/bug kill 5.WAV-a9c1c0462760a315cb8aa7f4997e51c3.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

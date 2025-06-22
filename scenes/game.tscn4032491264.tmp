@@ -1,0 +1,294 @@
+[gd_scene load_steps=28 format=3 uid="uid://cvwai0nd61hcj"]
+
+[ext_resource type="Script" uid="uid://i1jkdr76usqk" path="res://scripts/camera_shake.gd" id="1_ir15t"]
+[ext_resource type="PackedScene" uid="uid://4xogkc0nabjc" path="res://scenes/swatter.tscn" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://d3dujpe1kvq4o" path="res://scripts/wave_manager.gd" id="2_yqjtg"]
+[ext_resource type="FontFile" uid="uid://dyjsgxqsdmwss" path="res://assets/DePixelHalbfett.ttf" id="3_0tnpc"]
+[ext_resource type="AudioStream" uid="uid://c5p8ar7ynd1ud" path="res://assets/musicbuildup.wav" id="3_lbhrr"]
+[ext_resource type="AudioStream" uid="uid://dn4lmxmcso8wd" path="res://assets/musicloop.wav" id="3_lnu2h"]
+[ext_resource type="Script" uid="uid://bf6ppugpgd5xw" path="res://scripts/boundary.gd" id="5_iywne"]
+[ext_resource type="Texture2D" uid="uid://dkrj66vphph44" path="res://assets/failscreen.png" id="6_p57ef"]
+[ext_resource type="Shader" uid="uid://v0o8optckucn" path="res://resources/crt.gdshader" id="7_u5sy4"]
+[ext_resource type="Texture2D" uid="uid://48jkwiipua4j" path="res://assets/panel.png" id="9_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://crtxrsg0idu2x" path="res://assets/cracked stage 1.png" id="10_dinhu"]
+[ext_resource type="Shader" uid="uid://s6xjdi8dkr02" path="res://resources/crackedscreen.gdshader" id="10_kvpfn"]
+[ext_resource type="Texture2D" uid="uid://deqfu54bwdhqb" path="res://assets/cracked stage 2.png" id="12_dinhu"]
+[ext_resource type="Script" uid="uid://c28jho3jg4lq" path="res://scripts/vfxmanager.gd" id="13_kvuet"]
+[ext_resource type="Texture2D" uid="uid://b38ujjfwhnnkk" path="res://assets/cracked stage 3.png" id="13_trtic"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lnu2h"]
+load_path = "res://.godot/imported/grassybg.png-0bfb177aa31f9a0f7e060c7da1386c4b.ctex"
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_h21dd"]
+vertices = PackedVector2Array(325, 245, -325, 245, -325, -245, 325, -245)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-325, -245, 325, -245, 325, 245, -325, 245)])
+agent_radius = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lnu2h"]
+size = Vector2(135.176, 30.6746)
+
+[sub_resource type="Animation" id="Animation_iywne"]
+resource_name = "music"
+length = 22.16
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Music/MusicIntro")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_lbhrr")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WaveManager")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(22.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"start_music_loop"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p57ef"]
+_data = {
+&"music": SubResource("Animation_iywne")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbhrr"]
+size = Vector2(2, 490)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p57ef"]
+size = Vector2(2, 646)
+
+[sub_resource type="Animation" id="Animation_gee14"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_u5sy4"]
+resource_name = "fail"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0tnpc"]
+_data = {
+&"RESET": SubResource("Animation_gee14"),
+&"fail": SubResource("Animation_u5sy4")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gee14"]
+shader = ExtResource("7_u5sy4")
+shader_parameter/resolution = Vector2(320, 180)
+shader_parameter/scan_line_amount = 0.5
+shader_parameter/warp_amount = 0.05
+shader_parameter/vignette_amount = 0.5
+shader_parameter/vignette_intensity = 0.3
+shader_parameter/grille_amount = 0.05
+shader_parameter/brightness_boost = 1.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0tnpc"]
+shader = ExtResource("10_kvpfn")
+shader_parameter/refractionOffset = Vector2(25, 25)
+shader_parameter/reflectionOffset = Vector2(1, 1)
+shader_parameter/reflectionColor = Color(1, 1, 1, 0.8)
+
+[node name="Game" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-4, -4.00001)
+scale = Vector2(1.125, 1.14583)
+texture = SubResource("CompressedTexture2D_lnu2h")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+rotation = 0.0139827
+script = ExtResource("1_ir15t")
+
+[node name="Swatter" parent="." instance=ExtResource("1_uwrxv")]
+
+[node name="WaveManager" type="Node" parent="."]
+script = ExtResource("2_yqjtg")
+
+[node name="SpawnTimer" type="Timer" parent="WaveManager"]
+wait_time = 0.4
+
+[node name="WaveTimer" type="Timer" parent="WaveManager"]
+wait_time = 45.0
+
+[node name="InterimTimer" type="Timer" parent="WaveManager"]
+
+[node name="RoundLabel" type="RichTextLabel" parent="WaveManager"]
+modulate = Color(0, 0, 0, 1)
+offset_left = 196.0
+offset_top = -220.0
+offset_right = 303.0
+offset_bottom = -193.0
+theme_override_fonts/normal_font = ExtResource("3_0tnpc")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]Round[/center]"
+
+[node name="NumberLabel" type="RichTextLabel" parent="WaveManager"]
+modulate = Color(0, 0, 0, 1)
+offset_left = 197.0
+offset_top = -193.0
+offset_right = 303.0
+offset_bottom = -165.0
+theme_override_fonts/normal_font = ExtResource("3_0tnpc")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]123[/center]"
+
+[node name="EnemyContainer" type="Node" parent="."]
+
+[node name="FoodContainer" type="Node" parent="."]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+scale = Vector2(1.05642, 1.04006)
+navigation_polygon = SubResource("NavigationPolygon_h21dd")
+
+[node name="FoodSpawnRegion" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FoodSpawnRegion"]
+scale = Vector2(1.32748, 4.11132)
+shape = SubResource("RectangleShape2D_lnu2h")
+
+[node name="Music" type="Node" parent="."]
+
+[node name="MusicHandler" type="AnimationPlayer" parent="Music"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_p57ef")
+}
+autoplay = "music"
+
+[node name="MusicIntro" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("3_lbhrr")
+volume_db = -16.0
+
+[node name="MusicLoop" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("3_lnu2h")
+volume_db = -16.0
+
+[node name="Bounds" type="Node" parent="."]
+
+[node name="BoundLeft" type="Area2D" parent="Bounds"]
+position = Vector2(-324, 0)
+script = ExtResource("5_iywne")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BoundLeft"]
+shape = SubResource("RectangleShape2D_lbhrr")
+
+[node name="BoundTop" type="Area2D" parent="Bounds"]
+position = Vector2(0, -244)
+script = ExtResource("5_iywne")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BoundTop"]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_p57ef")
+
+[node name="BoundBottom" type="Area2D" parent="Bounds"]
+position = Vector2(0, 244)
+script = ExtResource("5_iywne")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BoundBottom"]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_p57ef")
+
+[node name="BoundRight" type="Area2D" parent="Bounds"]
+position = Vector2(324, 0)
+script = ExtResource("5_iywne")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BoundRight"]
+shape = SubResource("RectangleShape2D_lbhrr")
+
+[node name="Failscreen" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+texture = ExtResource("6_p57ef")
+
+[node name="FailAnimation" type="AnimationPlayer" parent="Failscreen"]
+libraries = {
+&"": SubResource("AnimationLibrary_0tnpc")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+z_index = 1
+material = SubResource("ShaderMaterial_gee14")
+offset_left = -7.0
+offset_top = -8.0
+offset_right = 651.0
+offset_bottom = 493.0
+
+[node name="RoundPanel" type="Sprite2D" parent="."]
+position = Vector2(249, -192)
+texture = ExtResource("9_0tnpc")
+
+[node name="Cracked Screen Stage 1" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+material = SubResource("ShaderMaterial_0tnpc")
+position = Vector2(-1.49996, 4.24998)
+scale = Vector2(0.500781, 0.508854)
+texture = ExtResource("10_dinhu")
+
+[node name="Cracked Screen Stage 2" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+material = SubResource("ShaderMaterial_0tnpc")
+position = Vector2(-2.33975, -0.0312557)
+scale = Vector2(1.01271, 1.02904)
+texture = ExtResource("12_dinhu")
+
+[node name="Cracked Screen Stage 3" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+material = SubResource("ShaderMaterial_0tnpc")
+position = Vector2(-1.49996, 4.24998)
+scale = Vector2(0.500781, 0.508854)
+texture = ExtResource("13_trtic")
+
+[node name="FX Manager" type="Node" parent="." node_paths=PackedStringArray("camera", "screen_cracks_1", "screen_cracks_2", "screen_cracks_3")]
+script = ExtResource("13_kvuet")
+camera = NodePath("../Camera2D")
+screen_cracks_1 = NodePath("../Cracked Screen Stage 1")
+screen_cracks_2 = NodePath("../Cracked Screen Stage 2")
+screen_cracks_3 = NodePath("../Cracked Screen Stage 3")
+
+[connection signal="timeout" from="WaveManager/SpawnTimer" to="WaveManager" method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="WaveManager/WaveTimer" to="WaveManager" method="_on_wave_timer_timeout"]
+[connection signal="timeout" from="WaveManager/InterimTimer" to="WaveManager" method="_on_interim_timer_timeout"]

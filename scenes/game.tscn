@@ -1,5 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://cvwai0nd61hcj"]
+[gd_scene load_steps=28 format=3 uid="uid://cvwai0nd61hcj"]
 
+[ext_resource type="Script" uid="uid://i1jkdr76usqk" path="res://scripts/camera_shake.gd" id="1_ir15t"]
 [ext_resource type="PackedScene" uid="uid://4xogkc0nabjc" path="res://scenes/swatter.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://d3dujpe1kvq4o" path="res://scripts/wave_manager.gd" id="2_yqjtg"]
 [ext_resource type="FontFile" uid="uid://dyjsgxqsdmwss" path="res://assets/DePixelHalbfett.ttf" id="3_0tnpc"]
@@ -7,8 +8,13 @@
 [ext_resource type="AudioStream" uid="uid://dn4lmxmcso8wd" path="res://assets/musicloop.wav" id="3_lnu2h"]
 [ext_resource type="Script" uid="uid://bf6ppugpgd5xw" path="res://scripts/boundary.gd" id="5_iywne"]
 [ext_resource type="Texture2D" uid="uid://dkrj66vphph44" path="res://assets/failscreen.png" id="6_p57ef"]
-[ext_resource type="Shader" path="res://resources/crt.gdshader" id="7_u5sy4"]
+[ext_resource type="Shader" uid="uid://v0o8optckucn" path="res://resources/crt.gdshader" id="7_u5sy4"]
 [ext_resource type="Texture2D" uid="uid://48jkwiipua4j" path="res://assets/panel.png" id="9_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://crtxrsg0idu2x" path="res://assets/cracked stage 1.png" id="10_dinhu"]
+[ext_resource type="Shader" uid="uid://s6xjdi8dkr02" path="res://resources/crackedscreen.gdshader" id="10_kvpfn"]
+[ext_resource type="Texture2D" uid="uid://deqfu54bwdhqb" path="res://assets/cracked stage 2.png" id="12_dinhu"]
+[ext_resource type="Script" uid="uid://c28jho3jg4lq" path="res://scripts/vfxmanager.gd" id="13_kvuet"]
+[ext_resource type="Texture2D" uid="uid://b38ujjfwhnnkk" path="res://assets/cracked stage 3.png" id="13_trtic"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lnu2h"]
 load_path = "res://.godot/imported/grassybg.png-0bfb177aa31f9a0f7e060c7da1386c4b.ctex"
@@ -113,12 +119,22 @@ shader_parameter/vignette_intensity = 0.3
 shader_parameter/grille_amount = 0.05
 shader_parameter/brightness_boost = 1.2
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0tnpc"]
+shader = ExtResource("10_kvpfn")
+shader_parameter/refractionOffset = Vector2(25, 25)
+shader_parameter/reflectionOffset = Vector2(1, 1)
+shader_parameter/reflectionColor = Color(1, 1, 1, 0.8)
+
 [node name="Game" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-4, -4.00001)
+scale = Vector2(1.125, 1.14583)
 texture = SubResource("CompressedTexture2D_lnu2h")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+rotation = 0.0139827
+script = ExtResource("1_ir15t")
 
 [node name="Swatter" parent="." instance=ExtResource("1_uwrxv")]
 
@@ -231,6 +247,7 @@ libraries = {
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+z_index = 1
 material = SubResource("ShaderMaterial_gee14")
 offset_left = -7.0
 offset_top = -8.0
@@ -240,6 +257,37 @@ offset_bottom = 493.0
 [node name="RoundPanel" type="Sprite2D" parent="."]
 position = Vector2(249, -192)
 texture = ExtResource("9_0tnpc")
+
+[node name="Cracked Screen Stage 1" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+material = SubResource("ShaderMaterial_0tnpc")
+position = Vector2(-1.49996, 4.24998)
+scale = Vector2(0.500781, 0.508854)
+texture = ExtResource("10_dinhu")
+
+[node name="Cracked Screen Stage 2" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+material = SubResource("ShaderMaterial_0tnpc")
+position = Vector2(-2.33975, -0.0312557)
+scale = Vector2(1.01271, 1.02904)
+texture = ExtResource("12_dinhu")
+
+[node name="Cracked Screen Stage 3" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+material = SubResource("ShaderMaterial_0tnpc")
+position = Vector2(-1.49996, 4.24998)
+scale = Vector2(0.500781, 0.508854)
+texture = ExtResource("13_trtic")
+
+[node name="FX Manager" type="Node" parent="." node_paths=PackedStringArray("camera", "screen_cracks_1", "screen_cracks_2", "screen_cracks_3")]
+script = ExtResource("13_kvuet")
+camera = NodePath("../Camera2D")
+screen_cracks_1 = NodePath("../Cracked Screen Stage 1")
+screen_cracks_2 = NodePath("../Cracked Screen Stage 2")
+screen_cracks_3 = NodePath("../Cracked Screen Stage 3")
 
 [connection signal="timeout" from="WaveManager/SpawnTimer" to="WaveManager" method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="WaveManager/WaveTimer" to="WaveManager" method="_on_wave_timer_timeout"]

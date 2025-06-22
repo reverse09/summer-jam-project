@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://u5ybvrbdnkrh"
+path="res://.godot/imported/Fearless Fighter2.wav-2856ed504497563190c00b46228ab148.sample"
+
+[deps]
+
+source_file="res://sounds/Fearless Fighter2.wav"
+dest_files=["res://.godot/imported/Fearless Fighter2.wav-2856ed504497563190c00b46228ab148.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
