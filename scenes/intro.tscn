@@ -1,16 +1,17 @@
-[gd_scene load_steps=15 format=3 uid="uid://d1mwdj8tkjgov"]
+[gd_scene load_steps=42 format=3 uid="uid://d1mwdj8tkjgov"]
 
-[ext_resource type="Script" path="res://scripts/intro.gd" id="1_37iue"]
+[ext_resource type="Script" uid="uid://b05gbpae1363g" path="res://scripts/intro.gd" id="1_37iue"]
 [ext_resource type="AudioStream" uid="uid://c8nn1ngwkeboa" path="res://sounds/Menu.mp3" id="1_ioskq"]
 [ext_resource type="FontFile" uid="uid://r61b8omyus0f" path="res://assets/Minecraft.ttf" id="2_yjqpq"]
 [ext_resource type="Texture2D" uid="uid://7wvadtfh154d" path="res://assets/grassybg2.png" id="3_4bx60"]
-[ext_resource type="PackedScene" uid="uid://dwvxlnjchmrli" path="res://scenes/beetle.tscn" id="4_bu1yb"]
-[ext_resource type="PackedScene" uid="uid://wm7uh6iipgvs" path="res://scenes/fly.tscn" id="5_t1qkj"]
-[ext_resource type="PackedScene" uid="uid://dtfpvbmpgv14" path="res://scenes/firefly.tscn" id="6_272cy"]
-[ext_resource type="PackedScene" uid="uid://xjun3pfge6a2" path="res://scenes/stinkbug.tscn" id="7_37iue"]
-[ext_resource type="PackedScene" uid="uid://b2pshiy2rjvlp" path="res://scenes/spider.tscn" id="8_n6p8m"]
+[ext_resource type="Texture2D" uid="uid://wxflidp05r6y" path="res://assets/beetle.png" id="5_m3r7s"]
+[ext_resource type="Texture2D" uid="uid://comefjojqmh41" path="res://assets/fly.png" id="7_u05oh"]
+[ext_resource type="Texture2D" uid="uid://duy0420a717ka" path="res://assets/stink_bug.png" id="8_xwriy"]
 [ext_resource type="Texture2D" uid="uid://bnkoxnthp8571" path="res://assets/buggers.png" id="9_272cy"]
 [ext_resource type="Texture2D" uid="uid://c42psuk8f0wmd" path="res://assets/toomanytooswat.png" id="10_37iue"]
+[ext_resource type="Texture2D" uid="uid://dkuklty21ex2b" path="res://assets/spider.png" id="10_u5myo"]
+[ext_resource type="Texture2D" uid="uid://bot587hau8ett" path="res://assets/firefly.png" id="11_dryi7"]
+[ext_resource type="Shader" uid="uid://v0o8optckucn" path="res://resources/crt.gdshader" id="12_n6p8m"]
 
 [sub_resource type="Animation" id="Animation_i2l1n"]
 length = 0.001
@@ -351,6 +352,196 @@ _data = {
 &"intro": SubResource("Animation_4bx60")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5j00"]
+atlas = ExtResource("5_m3r7s")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3xpc"]
+atlas = ExtResource("5_m3r7s")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vuf7"]
+atlas = ExtResource("5_m3r7s")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88ub3"]
+atlas = ExtResource("5_m3r7s")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_miimq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5j00")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3xpc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vuf7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88ub3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lkvx"]
+atlas = ExtResource("7_u05oh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sgyng"]
+atlas = ExtResource("7_u05oh")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qovp"]
+atlas = ExtResource("7_u05oh")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyt7k"]
+atlas = ExtResource("7_u05oh")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eswn2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2lkvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sgyng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qovp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eyt7k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7aac"]
+atlas = ExtResource("11_dryi7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prqgs"]
+atlas = ExtResource("11_dryi7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhdb3"]
+atlas = ExtResource("11_dryi7")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jf0mf"]
+atlas = ExtResource("11_dryi7")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_axgoa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7aac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prqgs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhdb3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jf0mf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qd45f"]
+atlas = ExtResource("8_xwriy")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nt82v"]
+atlas = ExtResource("8_xwriy")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ionv6"]
+atlas = ExtResource("8_xwriy")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcdfb"]
+atlas = ExtResource("8_xwriy")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t1d6k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qd45f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nt82v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ionv6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcdfb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_algeo"]
+atlas = ExtResource("10_u5myo")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5hg5"]
+atlas = ExtResource("10_u5myo")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d613k"]
+atlas = ExtResource("10_u5myo")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evcmw"]
+atlas = ExtResource("10_u5myo")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_txxy0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_algeo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5hg5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d613k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evcmw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m3r7s"]
+shader = ExtResource("12_n6p8m")
+shader_parameter/resolution = Vector2(320, 180)
+shader_parameter/scan_line_amount = 0.5
+shader_parameter/warp_amount = 0.05
+shader_parameter/vignette_amount = 0.5
+shader_parameter/vignette_intensity = 0.3
+shader_parameter/grille_amount = 0.05
+shader_parameter/brightness_boost = 1.2
+
 [node name="Intro" type="Node2D"]
 script = ExtResource("1_37iue")
 
@@ -372,7 +563,7 @@ autoplay = "intro"
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_top = 8.0
 offset_right = 160.0
-offset_bottom = 24.0
+offset_bottom = 60.0
 scale = Vector2(4, 4)
 theme_override_fonts/normal_font = ExtResource("2_yjqpq")
 bbcode_enabled = true
@@ -382,7 +573,7 @@ text = "[center]FROM:
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
 offset_top = 70.0
 offset_right = 213.0
-offset_bottom = 86.0
+offset_bottom = 156.0
 scale = Vector2(3, 3)
 theme_override_fonts/normal_font = ExtResource("2_yjqpq")
 bbcode_enabled = true
@@ -391,7 +582,7 @@ text = "[center]THE BOZO FRESHMEN"
 [node name="RichTextLabel3" type="RichTextLabel" parent="."]
 offset_top = 300.0
 offset_right = 160.0
-offset_bottom = 333.0
+offset_bottom = 389.0
 scale = Vector2(4, 4)
 theme_override_fonts/normal_font = ExtResource("2_yjqpq")
 bbcode_enabled = true
@@ -401,7 +592,7 @@ BROUGHT YOU:"
 [node name="RichTextLabel4" type="RichTextLabel" parent="."]
 offset_top = 430.0
 offset_right = 213.0
-offset_bottom = 446.0
+offset_bottom = 498.0
 scale = Vector2(3, 3)
 theme_override_fonts/normal_font = ExtResource("2_yjqpq")
 bbcode_enabled = true
@@ -412,25 +603,41 @@ modulate = Color(1, 1, 1, 0)
 position = Vector2(320, 240)
 texture = ExtResource("3_4bx60")
 
-[node name="Beetle" parent="." instance=ExtResource("4_bu1yb")]
+[node name="Beetle" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(85, 75)
+rotation = 0.680216
+sprite_frames = SubResource("SpriteFrames_miimq")
+autoplay = "default"
+frame = 3
 
-[node name="Fly" parent="." instance=ExtResource("5_t1qkj")]
+[node name="Fly" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(487, 143)
+rotation = 1.11234
+sprite_frames = SubResource("SpriteFrames_eswn2")
+autoplay = "default"
 
-[node name="Firefly" parent="." instance=ExtResource("6_272cy")]
+[node name="Firefly" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(84, 319)
+rotation = 2.56551
+sprite_frames = SubResource("SpriteFrames_axgoa")
+autoplay = "default"
 
-[node name="Stinkbug" parent="." instance=ExtResource("7_37iue")]
+[node name="Stinkbug" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(500, 403)
+rotation = 2.58321
+sprite_frames = SubResource("SpriteFrames_t1d6k")
+autoplay = "default"
 
-[node name="Spider" parent="." instance=ExtResource("8_n6p8m")]
+[node name="Spider" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(320, 240)
+rotation = -0.0173837
+sprite_frames = SubResource("SpriteFrames_txxy0")
+autoplay = "default"
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -449,9 +656,19 @@ texture = ExtResource("10_37iue")
 modulate = Color(1, 1, 1, 0)
 offset_top = 416.0
 offset_right = 160.0
-offset_bottom = 432.0
+offset_bottom = 476.0
 scale = Vector2(4, 4)
 theme_override_colors/default_color = Color(1, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_yjqpq")
 bbcode_enabled = true
 text = "[center]CLICK TO PLAY"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+z_index = 1
+material = SubResource("ShaderMaterial_m3r7s")
+offset_left = -7.0
+offset_top = -8.0
+offset_right = 651.0
+offset_bottom = 493.0
