@@ -52,6 +52,7 @@ func find_food():
 			food.collision_shape_2d.disabled = true
 			food.get_parent().remove_child(food)
 			food.position = Vector2.ZERO
+			food.position.y -= 1
 			self.add_child(food)
 			food.search_target = false
 			holding_food = true
@@ -91,7 +92,9 @@ func run_with_food():
 			
 	
 	if (speed == STARTING_SPEED):
-		speed = STARTING_SPEED / 12
+		var factor = (1/12 + (1/80) * wave_manager.wave)
+		print(factor)
+		speed = STARTING_SPEED * factor
 	
 	nav.target_position = exit_position
 	direction_to_food = nav.get_next_path_position() - global_position
