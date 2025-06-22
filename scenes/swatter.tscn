@@ -61,7 +61,6 @@ script = ExtResource("1_bb5xh")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_me2ot")
 animation = &"swat"
-autoplay = "swat"
 frame = 5
 frame_progress = 1.0
 
@@ -79,7 +78,6 @@ shape = SubResource("RectangleShape2D_s202q")
 [node name="ConfusionTimer" type="Timer" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
 texture = SubResource("CompressedTexture2D_s202q")
 
 [connection signal="timeout" from="ConfusionTimer" to="." method="_on_confusion_timer_timeout"]
