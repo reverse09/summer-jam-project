@@ -6,6 +6,7 @@ extends Node
 @onready var music_loop: AudioStreamPlayer = $"../Music/MusicLoop"
 @onready var fail_animation: AnimationPlayer = $"../Failscreen/FailAnimation"
 @onready var game = preload("res://scenes/game.tscn")
+@onready var number_label: RichTextLabel = $NumberLabel
 
 const STARTING_FOOD = 4
 const BUG_SPAWN_OFFSET = 400
@@ -68,6 +69,7 @@ func start_wave():
 	difficulty_budget = 0
 	wave += 1
 	print("Started Wave " + str(wave))
+	number_label.text = "[center]" + str(wave) + "[/center]"
 	difficulty_budget = get_difficulty_budget()
 	allocate_difficulty_budget()
 	enemy_count = enemy_queue.size()
