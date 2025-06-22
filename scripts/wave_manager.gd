@@ -83,7 +83,7 @@ func _process(delta):
 
 func get_difficulty_budget() -> int:
 	## TODO: Replace this with something that's fun
-	return floor((45/(1 + (pow(2.718,-0.3 * (wave - 10))))) + 5)
+	return floor((45/(1 + (pow(2.718,-0.9 * (wave - 5))))) + wave + 5)
 	
 ## Repeatedly pick a random enemy, and if it is valid, add it to enemy queue
 func allocate_difficulty_budget():

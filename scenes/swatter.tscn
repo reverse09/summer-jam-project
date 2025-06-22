@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://4xogkc0nabjc"]
+[gd_scene load_steps=11 format=3 uid="uid://4xogkc0nabjc"]
 
 [ext_resource type="Script" uid="uid://dr5fvsspqkugv" path="res://scripts/swatter.gd" id="1_bb5xh"]
 [ext_resource type="Texture2D" uid="uid://d371ftd04g3vn" path="res://assets/swat.png" id="2_bb5xh"]
@@ -42,6 +42,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cjwij"]
 size = Vector2(25, 60)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s202q"]
+size = Vector2(22, 58)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s202q"]
+load_path = "res://.godot/imported/cursor.png-224f93d013e0812359a323dac1948615.ctex"
+
 [node name="Swatter" type="Area2D"]
 script = ExtResource("1_bb5xh")
 
@@ -55,3 +61,15 @@ shape = SubResource("RectangleShape2D_cjwij")
 
 [node name="SwatSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_s202q")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_s202q")
+
+[node name="ConfusionTimer" type="Timer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("CompressedTexture2D_s202q")
+
+[connection signal="timeout" from="ConfusionTimer" to="." method="_on_confusion_timer_timeout"]

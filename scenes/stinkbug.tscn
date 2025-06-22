@@ -105,6 +105,9 @@ _data = {
 [node name="Stinkbug" type="CharacterBody2D"]
 script = ExtResource("1_aj2dt")
 STARTING_HEALTH = 2
+STARTING_SPEED = 80.0
+wobble = 5
+wobble_period = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 0.0188157
@@ -114,6 +117,7 @@ shape = SubResource("CircleShape2D_aj2dt")
 material = SubResource("ShaderMaterial_6srol")
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_t1d6k")
+autoplay = "default"
 frame = 1
 frame_progress = 0.596905
 

@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://qubpr70nd2ed"]
+
+[ext_resource type="Script" uid="uid://d0dndgxwr2mlx" path="res://scripts/stink_cloud.gd" id="1_ndpsw"]
+[ext_resource type="Texture2D" uid="uid://bdtktb8mrf2nu" path="res://assets/stinkcloud.png" id="1_pede2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ndpsw"]
+radius = 31.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1b4wv"]
+radius = 31.0
+
+[node name="StinkCloud" type="Area2D"]
+script = ExtResource("1_ndpsw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_pede2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ndpsw")
+
+[node name="DestructionTimer" type="Timer" parent="."]
+wait_time = 6.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_1b4wv")
+
+[connection signal="timeout" from="DestructionTimer" to="." method="_on_destruction_timer_timeout"]
