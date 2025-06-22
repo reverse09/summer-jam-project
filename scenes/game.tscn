@@ -5,6 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://4xogkc0nabjc" path="res://scenes/swatter.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://d3dujpe1kvq4o" path="res://scripts/wave_manager.gd" id="2_yqjtg"]
 [ext_resource type="FontFile" uid="uid://dyjsgxqsdmwss" path="res://assets/DePixelHalbfett.ttf" id="3_0tnpc"]
+[ext_resource type="AudioStream" uid="uid://c5p8ar7ynd1ud" path="res://assets/musicbuildup.wav" id="3_lbhrr"]
+[ext_resource type="AudioStream" uid="uid://dn4lmxmcso8wd" path="res://assets/musicloop.wav" id="3_lnu2h"]
+[ext_resource type="Script" path="res://scripts/boundary.gd" id="5_iywne"]
+[ext_resource type="Texture2D" uid="uid://dkrj66vphph44" path="res://assets/failscreen.png" id="6_p57ef"]
+[ext_resource type="Shader" path="res://resources/crt.gdshader" id="7_u5sy4"]
 [ext_resource type="Script" uid="uid://bf6ppugpgd5xw" path="res://scripts/boundary.gd" id="5_iywne"]
 [ext_resource type="Shader" uid="uid://b22w3eihdq0vc" path="res://resources/displacement.gdshader" id="6_ir15t"]
 [ext_resource type="Texture2D" uid="uid://g144j1qa126t" path="res://assets/youstinktext.png" id="6_trtic"]
@@ -174,6 +179,22 @@ navigation_polygon = SubResource("NavigationPolygon_h21dd")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FoodSpawnRegion"]
 scale = Vector2(1.32748, 4.11132)
 shape = SubResource("RectangleShape2D_lnu2h")
+
+[node name="Music" type="Node" parent="."]
+
+[node name="MusicHandler" type="AnimationPlayer" parent="Music"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_p57ef")
+}
+
+[node name="MusicIntro" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("3_lbhrr")
+volume_db = -16.0
+
+[node name="MusicLoop" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("3_lnu2h")
+volume_db = -16.0
 
 [node name="Bounds" type="Node" parent="."]
 
