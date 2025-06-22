@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://d1mwdj8tkjgov"]
+[gd_scene load_steps=46 format=3 uid="uid://d1mwdj8tkjgov"]
 
 [ext_resource type="Script" uid="uid://b05gbpae1363g" path="res://scripts/intro.gd" id="1_37iue"]
 [ext_resource type="AudioStream" uid="uid://c8nn1ngwkeboa" path="res://sounds/Menu.mp3" id="1_ioskq"]
@@ -7,10 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://wxflidp05r6y" path="res://assets/beetle.png" id="5_m3r7s"]
 [ext_resource type="Texture2D" uid="uid://comefjojqmh41" path="res://assets/fly.png" id="7_u05oh"]
 [ext_resource type="Texture2D" uid="uid://duy0420a717ka" path="res://assets/stink_bug.png" id="8_xwriy"]
-[ext_resource type="Texture2D" uid="uid://bnkoxnthp8571" path="res://assets/buggers.png" id="9_272cy"]
-[ext_resource type="Texture2D" uid="uid://c42psuk8f0wmd" path="res://assets/toomanytooswat.png" id="10_37iue"]
+[ext_resource type="Shader" uid="uid://bq2er7dqlpddp" path="res://resources/slowdisplacement.gdshader" id="9_xwriy"]
 [ext_resource type="Texture2D" uid="uid://dkuklty21ex2b" path="res://assets/spider.png" id="10_u5myo"]
+[ext_resource type="Texture2D" uid="uid://4s8itf0ddk8o" path="res://assets/buggers text.png" id="10_u05oh"]
 [ext_resource type="Texture2D" uid="uid://bot587hau8ett" path="res://assets/firefly.png" id="11_dryi7"]
+[ext_resource type="Texture2D" uid="uid://dwnx5pgmxm683" path="res://assets/Subtitle Text.png" id="11_epycs"]
+[ext_resource type="Texture2D" uid="uid://cngmq00lehylb" path="res://assets/Click To Start Text.png" id="12_ge50m"]
 [ext_resource type="Shader" uid="uid://v0o8optckucn" path="res://resources/crt.gdshader" id="12_n6p8m"]
 
 [sub_resource type="Animation" id="Animation_i2l1n"]
@@ -154,18 +156,6 @@ tracks/11/path = NodePath("Sprite2D3:modulate")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("RichTextLabel5:modulate")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -319,25 +309,13 @@ tracks/11/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
-tracks/12/type = "value"
+tracks/12/type = "method"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("RichTextLabel5:modulate")
+tracks/12/path = NodePath(".")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(54, 55),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/13/type = "method"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath(".")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
 "times": PackedFloat32Array(53.5),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -496,6 +474,22 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u5myo"]
+shader = ExtResource("9_xwriy")
+shader_parameter/interval = 0.7
+shader_parameter/timeDelay = 0.0
+shader_parameter/intensityX = 20.0
+shader_parameter/intensityY = 20.0
+shader_parameter/seed = 42.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u05oh"]
+shader = ExtResource("9_xwriy")
+shader_parameter/interval = 0.7
+shader_parameter/timeDelay = 0.0
+shader_parameter/intensityX = 20.0
+shader_parameter/intensityY = 20.0
+shader_parameter/seed = 42.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_algeo"]
 atlas = ExtResource("10_u5myo")
 region = Rect2(0, 0, 32, 32)
@@ -632,36 +626,32 @@ rotation = 2.58321
 sprite_frames = SubResource("SpriteFrames_t1d6k")
 autoplay = "default"
 
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(318, 188)
+scale = Vector2(0.799066, 0.799066)
+texture = ExtResource("10_u05oh")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_u5myo")
+position = Vector2(320, 267)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_epycs")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D3"]
+material = SubResource("ShaderMaterial_u05oh")
+position = Vector2(2, 214)
+rotation = -0.0173837
+scale = Vector2(0.353113, 0.353113)
+texture = ExtResource("12_ge50m")
+
 [node name="Spider" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(320, 240)
 rotation = -0.0173837
 sprite_frames = SubResource("SpriteFrames_txxy0")
 autoplay = "default"
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(320, 50)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("9_272cy")
-
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(320, 125)
-rotation = 0.0959931
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("10_37iue")
-
-[node name="RichTextLabel5" type="RichTextLabel" parent="."]
-modulate = Color(1, 1, 1, 0)
-offset_top = 416.0
-offset_right = 160.0
-offset_bottom = 476.0
-scale = Vector2(4, 4)
-theme_override_colors/default_color = Color(1, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("2_yjqpq")
-bbcode_enabled = true
-text = "[center]CLICK TO PLAY"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
