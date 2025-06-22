@@ -1,29 +1,30 @@
-[gd_scene load_steps=11 format=3 uid="uid://4xogkc0nabjc"]
+[gd_scene load_steps=12 format=3 uid="uid://4xogkc0nabjc"]
 
 [ext_resource type="Script" uid="uid://dr5fvsspqkugv" path="res://scripts/swatter.gd" id="1_bb5xh"]
-[ext_resource type="Texture2D" uid="uid://d371ftd04g3vn" path="res://assets/swat.png" id="2_bb5xh"]
+[ext_resource type="Texture2D" uid="uid://bffuemjavf5jk" path="res://assets/swatter.png" id="2_s202q"]
 [ext_resource type="AudioStream" uid="uid://7aii4wa55xyl" path="res://assets/swat.wav" id="3_s202q"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bb5xh"]
-atlas = ExtResource("2_bb5xh")
-region = Rect2(0, 0, 400, 500)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_s202q"]
-atlas = ExtResource("2_bb5xh")
-region = Rect2(400, 0, 400, 500)
+atlas = ExtResource("2_s202q")
+region = Rect2(0, 0, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cjwij"]
-atlas = ExtResource("2_bb5xh")
-region = Rect2(800, 0, 400, 500)
+atlas = ExtResource("2_s202q")
+region = Rect2(32, 0, 32, 64)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_s202q"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ua6qa"]
+atlas = ExtResource("2_s202q")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsvdc"]
+atlas = ExtResource("2_s202q")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_me2ot"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": null
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bb5xh")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_s202q")
@@ -32,11 +33,17 @@ animations = [{
 "texture": SubResource("AtlasTexture_cjwij")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ua6qa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsvdc")
+}, {
+"duration": 1.0,
 "texture": null
 }],
 "loop": false,
 "name": &"swat",
-"speed": 40.0
+"speed": 35.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cjwij"]
@@ -52,9 +59,11 @@ load_path = "res://.godot/imported/cursor.png-224f93d013e0812359a323dac1948615.c
 script = ExtResource("1_bb5xh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.15768, 0.151552)
-sprite_frames = SubResource("SpriteFrames_s202q")
+sprite_frames = SubResource("SpriteFrames_me2ot")
 animation = &"swat"
+autoplay = "swat"
+frame = 5
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_cjwij")
@@ -70,6 +79,7 @@ shape = SubResource("RectangleShape2D_s202q")
 [node name="ConfusionTimer" type="Timer" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = SubResource("CompressedTexture2D_s202q")
 
 [connection signal="timeout" from="ConfusionTimer" to="." method="_on_confusion_timer_timeout"]
