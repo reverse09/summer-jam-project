@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cxojto356ec6t"
+path="res://.godot/imported/food loss 4.WAV-521e422412242ed467958a13f4cdbf3b.sample"
+
+[deps]
+
+source_file="res://sounds/voice lines/food loss 4.WAV"
+dest_files=["res://.godot/imported/food loss 4.WAV-521e422412242ed467958a13f4cdbf3b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

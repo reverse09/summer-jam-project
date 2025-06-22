@@ -1,5 +1,7 @@
 extends Node
 
+@export var vfx : Node
+
 @onready var enemy_container: Node = $"../EnemyContainer"
 @onready var food_container: Node = $"../FoodContainer"
 @onready var food_spawn_region: Node =  $"../FoodSpawnRegion"
@@ -129,6 +131,7 @@ func win():
 		return
 	
 	print("You won the Wave!")
+	vfx.play_round_end_line()
 	wave_active=false
 	$SpawnTimer.stop()
 	$WaveTimer.stop()
@@ -171,6 +174,7 @@ func enemy_death():
 		return
 	
 	kills += 1
+	vfx.play_sound("flydeath.wav")
 	print("Kills: " + str(kills))
 
 func check_food():
