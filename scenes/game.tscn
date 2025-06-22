@@ -1,5 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://cvwai0nd61hcj"]
+[gd_scene load_steps=35 format=3 uid="uid://cvwai0nd61hcj"]
 
+[ext_resource type="Script" uid="uid://i1jkdr76usqk" path="res://scripts/camera_shake.gd" id="1_ir15t"]
 [ext_resource type="PackedScene" uid="uid://4xogkc0nabjc" path="res://scenes/swatter.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://d3dujpe1kvq4o" path="res://scripts/wave_manager.gd" id="2_yqjtg"]
 [ext_resource type="FontFile" uid="uid://dyjsgxqsdmwss" path="res://assets/DePixelHalbfett.ttf" id="3_0tnpc"]
@@ -8,7 +9,23 @@
 [ext_resource type="Script" path="res://scripts/boundary.gd" id="5_iywne"]
 [ext_resource type="Texture2D" uid="uid://dkrj66vphph44" path="res://assets/failscreen.png" id="6_p57ef"]
 [ext_resource type="Shader" path="res://resources/crt.gdshader" id="7_u5sy4"]
+[ext_resource type="Script" uid="uid://bf6ppugpgd5xw" path="res://scripts/boundary.gd" id="5_iywne"]
+[ext_resource type="Shader" uid="uid://b22w3eihdq0vc" path="res://resources/displacement.gdshader" id="6_ir15t"]
+[ext_resource type="Texture2D" uid="uid://g144j1qa126t" path="res://assets/youstinktext.png" id="6_trtic"]
+[ext_resource type="Shader" uid="uid://v0o8optckucn" path="res://resources/crt.gdshader" id="7_u5sy4"]
 [ext_resource type="Texture2D" uid="uid://48jkwiipua4j" path="res://assets/panel.png" id="9_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://crtxrsg0idu2x" path="res://assets/cracked stage 1.png" id="10_dinhu"]
+[ext_resource type="Shader" uid="uid://s6xjdi8dkr02" path="res://resources/crackedscreen.gdshader" id="10_kvpfn"]
+[ext_resource type="Texture2D" uid="uid://deqfu54bwdhqb" path="res://assets/cracked stage 2.png" id="12_dinhu"]
+[ext_resource type="Script" uid="uid://c28jho3jg4lq" path="res://scripts/vfxmanager.gd" id="13_kvuet"]
+[ext_resource type="Texture2D" uid="uid://b38ujjfwhnnkk" path="res://assets/cracked stage 3.png" id="13_trtic"]
+[ext_resource type="Texture2D" uid="uid://de752sjmtec4p" path="res://assets/cracked stage 4.png" id="14_5newe"]
+[ext_resource type="AudioStream" uid="uid://b5xq4m50b2qwq" path="res://sounds/Music Stage 1.mp3" id="14_trtic"]
+[ext_resource type="AudioStream" uid="uid://du6myrgwkup7j" path="res://sounds/voice lines/game start.WAV" id="16_ca42v"]
+[ext_resource type="AudioStream" uid="uid://d34vh0f5lv78k" path="res://sounds/warning.wav" id="17_1kice"]
+[ext_resource type="Shader" uid="uid://b44iiitfsokvp" path="res://resources/displacementless.gdshader" id="17_264po"]
+[ext_resource type="Texture2D" uid="uid://x4fmiybj2ta8" path="res://assets/warning.png" id="17_rysoc"]
+[ext_resource type="Texture2D" uid="uid://bg7dv7rvvrkfy" path="res://assets/warningtext.png" id="19_1kice"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lnu2h"]
 load_path = "res://.godot/imported/grassybg.png-0bfb177aa31f9a0f7e060c7da1386c4b.ctex"
@@ -22,49 +39,19 @@ agent_radius = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lnu2h"]
 size = Vector2(135.176, 30.6746)
 
-[sub_resource type="Animation" id="Animation_iywne"]
-resource_name = "music"
-length = 22.16
-tracks/0/type = "audio"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Music/MusicIntro")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("3_lbhrr")
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/0/use_blend = true
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("WaveManager")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(22.15),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"start_music_loop"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_p57ef"]
-_data = {
-&"music": SubResource("Animation_iywne")
-}
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lbhrr"]
 size = Vector2(2, 490)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p57ef"]
 size = Vector2(2, 646)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ca42v"]
+shader = ExtResource("6_ir15t")
+shader_parameter/interval = 0.2
+shader_parameter/timeDelay = 0.0
+shader_parameter/intensityX = 20.0
+shader_parameter/intensityY = 20.0
+shader_parameter/seed = 42.0
 
 [sub_resource type="Animation" id="Animation_gee14"]
 length = 0.001
@@ -113,17 +100,44 @@ shader_parameter/vignette_intensity = 0.3
 shader_parameter/grille_amount = 0.05
 shader_parameter/brightness_boost = 1.2
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0tnpc"]
+shader = ExtResource("10_kvpfn")
+shader_parameter/refractionOffset = Vector2(25, 25)
+shader_parameter/reflectionOffset = Vector2(1, 1)
+shader_parameter/reflectionColor = Color(1, 1, 1, 0.8)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5newe"]
+shader = ExtResource("17_264po")
+shader_parameter/interval = 0.2
+shader_parameter/timeDelay = 0.0
+shader_parameter/intensityX = 20.0
+shader_parameter/intensityY = 20.0
+shader_parameter/seed = 42.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_37s47"]
+shader = ExtResource("6_ir15t")
+shader_parameter/interval = 0.4
+shader_parameter/timeDelay = 0.0
+shader_parameter/intensityX = 10.0
+shader_parameter/intensityY = 10.0
+shader_parameter/seed = 42.0
+
 [node name="Game" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(-4, -4.00001)
+scale = Vector2(1.125, 1.14583)
 texture = SubResource("CompressedTexture2D_lnu2h")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+rotation = 0.0139827
+script = ExtResource("1_ir15t")
 
 [node name="Swatter" parent="." instance=ExtResource("1_uwrxv")]
 
-[node name="WaveManager" type="Node" parent="."]
+[node name="WaveManager" type="Node" parent="." node_paths=PackedStringArray("vfx")]
 script = ExtResource("2_yqjtg")
+vfx = NodePath("../FX Manager")
 
 [node name="SpawnTimer" type="Timer" parent="WaveManager"]
 wait_time = 0.4
@@ -220,7 +234,8 @@ shape = SubResource("RectangleShape2D_lbhrr")
 [node name="Failscreen" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 z_index = 1
-texture = ExtResource("6_p57ef")
+material = SubResource("ShaderMaterial_ca42v")
+texture = ExtResource("6_trtic")
 
 [node name="FailAnimation" type="AnimationPlayer" parent="Failscreen"]
 libraries = {
@@ -230,6 +245,7 @@ libraries = {
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+z_index = 1
 material = SubResource("ShaderMaterial_gee14")
 offset_left = -7.0
 offset_top = -8.0
@@ -239,6 +255,81 @@ offset_bottom = 493.0
 [node name="RoundPanel" type="Sprite2D" parent="."]
 position = Vector2(249, -192)
 texture = ExtResource("9_0tnpc")
+
+[node name="Cracked Screen Stage 1" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+material = SubResource("ShaderMaterial_0tnpc")
+position = Vector2(-1.49996, 4.24998)
+scale = Vector2(0.500781, 0.508854)
+texture = ExtResource("10_dinhu")
+
+[node name="Cracked Screen Stage 2" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+material = SubResource("ShaderMaterial_0tnpc")
+position = Vector2(-2.33975, -0.0312557)
+scale = Vector2(1.01271, 1.02904)
+texture = ExtResource("12_dinhu")
+
+[node name="Cracked Screen Stage 3" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+material = SubResource("ShaderMaterial_0tnpc")
+position = Vector2(-1.49996, 4.24998)
+scale = Vector2(0.500781, 0.508854)
+texture = ExtResource("13_trtic")
+
+[node name="Cracked Screen Stage 4" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+material = SubResource("ShaderMaterial_0tnpc")
+position = Vector2(-1.49996, 4.24998)
+scale = Vector2(0.500781, 0.508854)
+texture = ExtResource("14_5newe")
+
+[node name="FX Manager" type="Node" parent="." node_paths=PackedStringArray("camera", "screen_cracks_1", "screen_cracks_2", "screen_cracks_3", "screen_cracks_4", "warning", "sfx_stream", "music_loop", "voice_stream", "warning_stream")]
+script = ExtResource("13_kvuet")
+camera = NodePath("../Camera2D")
+screen_cracks_1 = NodePath("../Cracked Screen Stage 1")
+screen_cracks_2 = NodePath("../Cracked Screen Stage 2")
+screen_cracks_3 = NodePath("../Cracked Screen Stage 3")
+screen_cracks_4 = NodePath("../Cracked Screen Stage 4")
+warning = NodePath("../Warning")
+sfx_stream = NodePath("SFX Stream")
+music_loop = NodePath("Music Stream")
+voice_stream = NodePath("Voice Stream")
+warning_stream = NodePath("Warning Stream")
+
+[node name="SFX Stream" type="AudioStreamPlayer" parent="FX Manager"]
+volume_db = -6.887
+
+[node name="Music Stream" type="AudioStreamPlayer" parent="FX Manager"]
+stream = ExtResource("14_trtic")
+volume_db = -5.669
+autoplay = true
+
+[node name="Voice Stream" type="AudioStreamPlayer" parent="FX Manager"]
+stream = ExtResource("16_ca42v")
+volume_db = -2.755
+autoplay = true
+
+[node name="Warning Stream" type="AudioStreamPlayer" parent="FX Manager"]
+stream = ExtResource("17_1kice")
+volume_db = -13.086
+
+[node name="Warning" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_5newe")
+position = Vector2(-266, -186)
+scale = Vector2(1.67442, 1.67442)
+texture = ExtResource("17_rysoc")
+
+[node name="Warning Text" type="Sprite2D" parent="Warning"]
+material = SubResource("ShaderMaterial_37s47")
+position = Vector2(99.7362, 7.7639)
+scale = Vector2(0.402947, 0.467713)
+texture = ExtResource("19_1kice")
 
 [connection signal="timeout" from="WaveManager/SpawnTimer" to="WaveManager" method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="WaveManager/WaveTimer" to="WaveManager" method="_on_wave_timer_timeout"]

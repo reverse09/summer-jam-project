@@ -108,6 +108,7 @@ func take_damage():
 				child.position = self.position
 				child.search_target = true
 		wave_manager.enemy_death()
+		wave_manager.vfx.play_bug_kill_line()
 		animation_player.play("crack")
 
 func update_sprite():
@@ -116,4 +117,7 @@ func update_sprite():
 func escape():
 	if holding_food:
 		wave_manager.enemy_death()
+		wave_manager.vfx.play_sound("losefood.wav")
+		wave_manager.vfx.play_food_loss_line()
+		wave_manager.vfx.show_warning()
 		queue_free()

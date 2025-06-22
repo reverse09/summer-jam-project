@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://yookb4027vm8"
+path="res://.godot/imported/Boiling Boss.mp3-457056e6e18f46131354def5128258a0.mp3str"
+
+[deps]
+
+source_file="res://sounds/Boiling Boss.mp3"
+dest_files=["res://.godot/imported/Boiling Boss.mp3-457056e6e18f46131354def5128258a0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
